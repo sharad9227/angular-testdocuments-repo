@@ -10,7 +10,9 @@ Node & NPM version
 This project requires Node v8+ and NPM v6+.
 
 Development server
-Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run ng serve for a dev server. Navigate to http://localhost:4200/.
+
+The app will automatically reload if you change any of the source files.
 
 Build
 First do npm install and run npm start for local build. Run ng build for server build. The build artifacts will be stored in the dist/ directory. Use the --prod flag for a production build.
