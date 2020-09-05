@@ -1,4 +1,4 @@
-# angular-testdocuments-repo
+# angular-test-documents-repo
 This project was generated with Angular CLI v6.2+.
 
 Build Status
