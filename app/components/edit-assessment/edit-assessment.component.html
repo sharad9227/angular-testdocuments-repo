@@ -1,0 +1,165 @@
+<app-header [collection_id]="collectionId" [operationMode]="operationMode" [subRoute]="step" (settingsRouteActivate)="settingsRouteActivate()"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-lg-1"></div>
+    <div class="col-md-10 col-lg-10 mt-2 ml-3">
+      <ul id="breadcrum-source" class="assessment-breadcrumb p-left-0">
+        <li [ngClass]="{active: step==='step1'}" class="active" (click)="step='step1'">
+          
+         <!-- <a href="javascript:void(0)">Content</a></li>-->
+        <li [ngClass]="{active: step==='step2'}">
+         <!-- <a *ngIf="itemsList.references != undefined" (click)="step='step2'"  href="javascript:void(0)">Settings</a>
+          <a *ngIf="itemsList.references === undefined" class="disabled" href="javascript:void(0)">Settings</a> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-lg-1"></div>
+    <div *ngIf="step === 'step1' && itemsList.references != undefined; else zero_state" class="col-md-10 col-lg-10 ml-5">
+      <div class="row header-row">
+        <div class="col-md-9 col-lg-9 col-xl-9 mt-3 pb-1" style="font-weight: bold;">
+          <span><i class="m-right-9 fa"></i>Your Test</span>
+        </div>
+        <div class="col-md-1 col-lg-1 col-xl-1 mt-3" style="max-width: 4%;">
+          <i class="dpg-icon dpg-icon-system-filter"></i>
+        </div>
+        <div class="col-md-2 col-lg-2 mt-2" style="min-width: 190px;">
+          <!-- <button type="button" (click)="addEditQuestions()" class="btn btn-primary cursor-style">
+	        	<i class="m-right-10 fa fa-plus"></i>Add Question
+          </button> -->
+          <mhe-button buttonText="+ Add Question" [purpose]="_buttonPurpose.Primary" (click)="addEditQuestions()"></mhe-button>
+        </div>
+      </div>
+
+      <div class="row h-20 justify-content-center font-color" class="row question-list-header">
+        <div class="col-md-1 col-lg-1 text-left">
+          <div class="form-group text-right mt-3">
+
+          </div>
+        </div>
+        <div class="col-md-1 col-lg-1">
+       		<div class="form-group text-left">
+            <div class="edit-selectall">
+                <!--<label for="selectAll" class="ahe-ui-checkbox">
+                  <input [checked]="selectAll.selected" (click)="selectAllQuestions($event)" type="checkbox" id="selectAll" value="selectAll"
+                    name="selectAll">
+                  <span class="cursor-pointer"></span>
+                </label> -->
+              <mhe-checkbox id="selectAll" [checked]="selectAll.selected" #selectAllEdit (change)="selectAllQuestions($event)"></mhe-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-lg-5 text-left">
+          <div class="form-group" sortColumn [sortKey]="'title'" [data]="itemsList.references" (sortEvent)="sortOnlyUnpinned($event)">
+            <label class="mt-2 cursor-style">Question</label>
+            <!-- <i class="fa fa-caret-down material-icons-down-icon cursor-style"></i>
+            <i class="fa fa-caret-up caret-drop-icons-up-icon cursor-style"></i> -->
+            <div class="icon-container-title">
+                <i class="dpg-icon dpg-icon-system-sort-white cursor-style dpg-icon-edit question"></i>
+              </div>  
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 text-left">
+          <div class="form-group" sortColumn [sortKey]="'typeDesc'" [data]="itemsList.references" (sortEvent)="sortOnlyUnpinned($event)">
+            <label class="mt-2 cursor-style">Type</label>
+            <!-- <i class="fa fa-caret-down material-icons-down-icon cursor-style"></i>
+            <i class="fa fa-caret-up caret-drop-icons-up-icon cursor-style"></i> -->
+            <div class="icon-container-title">
+                <i class="dpg-icon dpg-icon-system-sort-white cursor-style dpg-icon-edit type"></i>
+              </div>  
+          </div>
+        </div>
+        <div class="col-md-1 col-lg-1 text-left">
+          <div class="form-group">
+            <label class="mt-2 cursor-style pb-5">Points</label>
+          </div>
+        </div>
+        <div class="col-md-1 col-lg-1 text-right">
+        </div>
+      </div>
+      <div [style.height.px]="editCompHeight" class="edit-list" [dragula]='"EDIT-QUESTIONS"' [(dragulaModel)]="itemsList.references">
+        <div class="row1 h-20 border-bottom" *ngFor="let question of itemsList.references; let quesInd = index">
+          <div class="col-md-1 col-lg-1 text-left">
+            <div class="form-group text-right mt-3">
+              <span class="handles" style="position: relative;top: 9px;margin-right: 10px;">
+                <i *ngIf="!question.pinned" class="dpg-icon dpg-icon-system-kebab"></i>
+                <i *ngIf="!question.pinned" class="dpg-icon dpg-icon-system-kebab" style="margin-left: -13px"></i>
+                <i *ngIf="question.pinned" class="fa fa-thumb-tack" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-1 col-lg-1 text-left">
+            <div style="position: relative;top: 16px;">
+              <!-- <label class="ahe-ui-checkbox">
+                      <input [checked]="selectAll.selected" type="checkbox" name="questionSelect" (click)="OnCheckboxSelect(question, $event)">
+                      <span class="cursor-pointer"></span>
+                    </label> -->
+              <mhe-checkbox id="editQuestions{{quesInd}}" #editedQuestions [checked]="question.selected"
+                (change)="OnCheckboxSelect(question, $event)"></mhe-checkbox>
+            </div>
+          </div>
+          <div class="col-md-5 col-lg-5">
+            <div class="form-group mt-4 question-title">
+              <label title="{{question.title}}" [innerHtml]="question.title | truncate:[50, '...'] | linebreak:36"
+                (click)="getOnlinePreviewUrl(question.onlinePreview,question.typeDesc,quesInd)"></label>
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3 text-left">
+            <div class="form-group mt-3">
+              <label class="assesment-position" title="{{question.typeDesc}}" [innerHtml]="question.typeDesc"></label>
+            </div>
+          </div>
+          <div class="col-md-1 col-lg-1 text-center">
+            <div class="ahe-ui form-group mt-3">
+              <!-- <input type="text" id="points_{{quesInd}}" [(ngModel)]="question.points" class="form-control remove-increment-icon points-position" title="points" 
+              	innerHtml="{{question.points}}" maxlength="7" (ngModelChange)="updateModel(question)" (focusout)="validatePoints($event)" /> -->
+              <mhe-input id="points_{{quesInd}}" [(ngModel)]="question.points"
+              (ngModelChange)="updateModel(question)" (focusout)="validatePoints($event)" maxlength="7"></mhe-input>
+            </div>
+          </div>
+          <div class="col-md-1 col-lg-1 text-right">
+            <div class="form-group mt-3">
+              <!-- <kebab-component [kebabMenuItems]="kebabMenu" [collection]="question"  [checked-questions]="sortedQuestionsList()"  (pinUnpinQuestion)="pinUnpinQuestion($event)" [disableDelete]="true" (softDelete)="softSourceDelete($event)"></kebab-component> -->
+              <kebab-component [kebabMenuItems]="kebabMenu" [collection]="question"  [checked-questions]="selectedQuestionsList"  (pinUnpinQuestion)="pinUnpinQuestion($event)" [disableDelete]="true" (softDelete)="softSourceDelete($event)"></kebab-component>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #zero_state>
+      <div *ngIf="step==='step1'" class="container">
+        <div class="row no-margin" [style.height.px]="zeroStateCompHeight">
+          <div class="col-md-1 col-lg-1"></div>
+          <div class="col-md-10 col-lg-10 mt-4 ml-4 align-center zero-state">
+            <div style="margin-top: 80px;">
+              <h4>
+                Your test is empty.
+              </h4>
+              <div style="margin-top: 30px;">
+                <!-- <button type="button" (click)="addZeroQuestions()" class="btn btn-primary cursor-style"><i class="m-right-10 fa fa-plus"></i>Add
+                  existing question</button> -->
+                <mhe-button buttonText="+ Add existing question" [purpose]="_buttonPurpose.Primary" (click)="addZeroQuestions()"></mhe-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="col-md-12 col-lg-12">
+  <print-preference *ngIf="step==='step2'" [collection_id]="collectionId"></print-preference>
+</div>
+<div class="col-md-12 col-lg-12 col-xl-12 text-center footer-{{step}}">
+  <app-footer [collection_id]="collectionId" [operationMode]="operationMode" [currentStep]="step"></app-footer>
+</div>
+
+<modal-component *ngIf="modalShow" [message]="alertMessage" [size]="size" [modal-opt-option]="showModal"
+  (modalOptOptionEvent)="modalOptOut($event)" (modalOk)="modalOkJob()" (modalCancel)="modalCancelJob()"></modal-component>
+
+<preview-modal-component *ngIf="closeModalPopUp" [header]="Preview" [type]="type" [preview-url]="previewUrl" [question-index]="qIndex" (closeModal)="closeModal($event)"></preview-modal-component>

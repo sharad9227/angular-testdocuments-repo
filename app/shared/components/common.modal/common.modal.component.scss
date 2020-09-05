@@ -1,0 +1,54 @@
+
+
+.ahe-ui-alert-modal .modal-dialog .modal-content {
+	padding: 0px;
+  }
+  
+  .modal-dialog {
+	position: fixed;
+	top: 50%;
+	z-index: 1010;
+	margin: 0px auto;
+	transform: translateY(-50%);
+	left: calc(50% - 150px);
+  }
+  
+  .modal-overlay {
+	background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  #common-modal {
+	.modal-body, .modal-footer {
+	  padding: 30px;
+	}
+	.modal-footer{
+		display: inline-block;
+		text-align: left;
+	}
+	}
+	.modal-footer-new {
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+		border-top: 1px solid #e9ecef;
+	}
+	.modal-footer-new button {
+		width: 130px;
+	}
+// #previewModal{
+// 	#previewModalOverlay{
+// 		background-color: rgba(0, 0, 0, 0.2);
+// 	}
+// 	.modal-dialog{
+// 		transform: translateX(-247%) translateY(-50%);
+// 		#previewIframe{
+// 			border: none;
+// 			width: 567px;
+// 			min-height: 400px;
+// 		}
+// 		.preview-model-content{
+// 			width: 702px !important;
+//     		height: 500px !important;
+// }
+// 	}
+// }

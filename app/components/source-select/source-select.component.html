@@ -1,0 +1,216 @@
+<app-header [operationMode]="operationMode" [subRoute]="step" (settingsRouteActivate)="settingsRouteActivate()"></app-header>
+<div class="container-fluid" style="position:relative">
+<app-filter-test-category *ngIf="bankObj.questions" [question-list]="bankObj.questions" (messageEvent)="receiveMessage($event)"
+  (filterEvent)="receiveFilter($event)">
+</app-filter-test-category>
+<div class="row1">
+  <div class="col-md-11 col-lg-11 col-xl-11 p-top-20">
+      <i  [ngClass]="panelExpanded?'dpg-icon dpg-icon-panel-toggle-arrow-right':'dpg-icon dpg-icon-panel-toggle-arrow-left'" title="CollapsePanel" (click)="panelExpanded=!panelExpanded" *ngIf="panelExpanded"></i>
+    
+    <ul id="breadcrum-source" class="assessment-breadcrumb p-left-0">
+
+
+      <li [ngClass]="{active: step==='step1'}" class="active" (click)="step='step1'">
+        <!-- <a href="javascript:void(0)">Content</a></li>
+        <li [ngClass]="{active: step==='step2'}">
+       <a *ngIf="selectedQuestionsListObj != undefined && selectedQuestionsListObj.length > 0" (click)="step='step2'"
+            href="javascript:void(0)">Settings</a>
+          <a *ngIf="selectedQuestionsListObj === undefined || selectedQuestionsListObj.length == 0" class="disabled"
+            href="javascript:void(0)">Settings</a>-->
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+
+
+
+<div *ngIf="step==='step1'" class="container-fluid" #sourceContainer>
+
+  <div id="source-select" class="row1 sample-row-class">
+
+    <div id="select-bank" class="col-md-6 col-lg-6 col-xl-6" [hidden]="panelExpanded">
+
+      <div class="row1">
+
+        <div class="col-md-12 col-lg-12 col-xl-12" >
+            <i class="leftPanelCollapse" [ngClass]="panelExpanded?'dpg-icon dpg-icon-panel-toggle-arrow-right':'dpg-icon dpg-icon-panel-toggle-arrow-left'" title="CollapsePanel" (click)="panelExpanded=!panelExpanded"></i>
+            <i class="dpg-icon-system-close close-button" title="Close" (click)="panelClosed=true"></i>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-12" >
+            <h4 [hidden]="hideHeader">Add question</h4> 
+            <h5 [hidden]="hideHeader">Choose a source to pick from</h5>
+       
+        </div>
+         
+       
+        <div id="question-list" class="col-md-12 col-lg-12 col-xl-12" [hidden]="panelExpanded || panelClosed">
+          <div *ngIf="!showBank" id="question-bank-header">
+              <h4>Your source:</h4>
+             <div class="row1">
+              <div class="col-md-11 col-lg-11 col-xl-11">
+                <div id="bank-name" class="row1 no-margin">
+                  <div class="col-md-9 col-md-9 col-md-9" id="aTitle" title="{{bankObj?.bank?.title}}" [innerHtml]="bankObj?.bank?.title | truncate:[50, '...'] | linebreak:36"></div>
+                  <div class="col-md-3 col-md-3 col-md-3 align-right">
+                    <a style="cursor: pointer" (click)="showBank = true">Change</a>
+</div>
+</div>
+</div>
+<div class="col-md-2 col-lg-2 col-xl-2"></div>
+</div>
+</div>
+<div *ngIf="!showBank" id="add-filter" class="relative">
+  <div class="row1">
+    <div class="col-md-10 col-lg-10 col-xl-10">
+      <!-- <button type="button" [disabled]="!enableAdd" [ngClass]="(enableAdd == 0)? 'btn btn-primary disabled' : 'btn btn-primary'"
+                (click)="addToRight($event)">Add</button> -->
+      <mhe-button *ngIf="enableAdd" buttonText="Add" [purpose]="_buttonPurpose.Primary" [disabled]="!enableAdd" (click)="addToRight($event)"></mhe-button>
+      <mhe-button *ngIf="!enableAdd" buttonText="Add" [purpose]="_buttonPurpose.Primary" [disabled]="!enableAdd" (click)="addToRight($event)"></mhe-button>
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2">
+      <i id="openMainPanel" (click)="OpenPanel('mainPanel', 0, '', $event)" class="dpg-icon dpg-icon-system-filter pointer-cursor"
+        style="background: #d6d6d6;"></i>
+<div *ngIf="count > 0" class="count-show">
+  {{count}}
+</div>
+</div>
+</div>
+</div>
+<source-picker (sourceSuccess)="checkQuestionLoad($event)" (questionFlagSelect)="hideAddQuestion($event)" *ngIf="showBank"></source-picker>
+<div *ngIf="bankObj.questions && !showBank">
+  <source-bank [question-list]="bankObj.questions" [dropped-questions]="selectedQuestionsListObj" (enableAdd)="receiveDataWhileChecked($event)"
+    [transfer-success]="transferSuccessMsg" [filters-list]="filterJsonObject"></source-bank>
+  <!--{{filterJsonObject | json}}-->
+</div>
+</div>
+</div>
+</div>
+<div [ngClass]="panelExpanded?'col-md-12 col-lg-12 col-xl-12':'col-md-6 col-lg-6 col-xl-6'">
+  <div class="row1  ">
+    <div class="col-md-9 col-lg-9 col-xl-9 mt-3 pb-1" style="font-weight: bold;">
+<span><i class="m-right-9 fa"></i>Your Test</span>
+</div>
+<div class="col-md-2 col-lg-2 mt-2">
+  <mhe-button buttonText="Remove" *ngIf="renameActivated" [purpose]="_buttonPurpose.Primary" [disabled]="renameActivated" (click)="removeSelected()"></mhe-button>
+  <mhe-button buttonText="Remove" *ngIf="!renameActivated" [purpose]="_buttonPurpose.Primary" [disabled]="renameActivated"
+    (click)="removeSelected()"></mhe-button>
+</div>
+</div>
+<div id="assessment-details" class="row1">
+  <div class="col-md-12 col-lg-12 col-xl-12">
+    <div class="row1 no-margin" [style.height.px]="sourcePickerCompHeight">
+      <div class="col-lg-12 col-md-12 col-xl-12 question-list-table" dnd-droppable (onDropSuccess)="transferDataSuccess($event)"
+        [dropZones]="['demo1']">
+        <div class="row1 question-list-header">
+          <div class="p-all-0 col-sm-2 col-lg-2 col-md-2 col-xl-2">
+            <div style="margin-left: 15px;" class="pb-5">
+<!-- <label id="droppedCheckboxLabelId{{selectedQuestions.index}}" class="ahe-ui-checkbox">
+                      <input [(ngModel)]="selectedTitle.selected" [disabled]="selectedQuestionsListObj.length == 0"
+                      (click)="selectAllSelctedSource($event)" type="checkbox" id="chosenTitle" value="Title" name="title">
+                      <span class="cursor-pointer"></span>
+                    </label> -->
+<mhe-checkbox id="droppedCheckboxLabelId{{selectedQuestions.index}}" [checked]="selectedTitle.selected" [disabled]="selectedQuestionsListObj.length == 0"
+  #selectAll (change)="selectAllSelctedSource($event)" value="Title" name="title"></mhe-checkbox>
+</div>
+</div>
+<div class="p-all-0 col-sm-5 col-lg-5 col-md-5 col-xl-5">
+  <div class="form-group mt-2">
+    <label>Question</label>
+  </div>
+</div>
+<div class="p-all-0 title-heading-margin col-sm-2 col-lg-2 col-md-2 col-xl-2 mt-1" sortColumn [sortKey]="'typeDesc'" [data]="selectedQuestionsListObj"
+  (sortEvent)="sortOnlyUnpinned($event)" (click)="sortOnlyUnpinned()">Type
+  <!-- <span class="sort-container">
+                    <i class="fa fa-caret-down material-icons-down-icon cursor-style"></i>
+                    <i class="fa fa-caret-up caret-icons-up-icon cursor-style"></i>
+                  </span> -->
+  <div class="icon-container-title">
+    <i class="dpg-icon dpg-icon-system-sort-white cursor-style dpg-icon-edit selected"></i>
+  </div>
+</div>
+<div class="pb-5 title-heading-margin col-sm-2 col-lg-2 col-md-2 col-xl-2 mt-1">
+  Points
+</div>
+<div class="p-all-0 col-sm-1 col-lg-1 col-md-1 col-xl-1">
+
+</div>
+</div>
+<div class="row1 bodyRow" [style.height.px]="sourcePickerTableCompHeight">
+  <div *ngIf="selectedQuestionsListObj.length > 0" style="width:100%" [dragula]='"SELECTED-QUESTIONS"' [(dragulaModel)]="selectedQuestionsListObj">
+<div id="droppedItems{{selectedQuestions.index}}" *ngFor="let selectedQuestions of selectedQuestionsListObj; let i = index"
+  class="row1 question-row no-margin">
+  <div id="droppedTablerowId{{selectedQuestions.index}}" class="p-all-0 col-sm-2 col-lg-2 col-md-2 col-xl-2">
+    <div class="qCheckboxHandler" id="droppedCheckboxLabelId{{selectedQuestions.index}}">
+      <span class="handles">
+                          <i *ngIf="selectedQuestions.pinned" class="fa fa-thumb-tack" style="margin-left: 16px" aria-hidden="true">
+</i>
+<i *ngIf="!selectedQuestions.pinned" id="droppedKebabId{{selectedQuestions.index}}" class="dpg-icon dpg-icon-system-kebab"></i>
+<i *ngIf="!selectedQuestions.pinned" id="droppedKebabId{{selectedQuestions.index}}" style="margin-left: -13px" class="dpg-icon dpg-icon-system-kebab"></i>
+</span>
+<!-- <label id="droppedCheckboxLabelId{{selectedQuestions.index}}" class="ahe-ui-checkbox">
+                          <input id="droppedCheckboxId{{selectedQuestions.index}}" [(ngModel)]="selectedQuestions.select"
+                            (click)="OnCheckboxSelect(selectedQuestions, $event)" type="checkbox" id="checked{{i}}{{j}}">
+                          <span class="cursor-pointer"></span>
+                        </label> -->
+<mhe-checkbox id="droppedCheckboxLabelId{{selectedQuestions.index}}" class="select-checkbox" [checked]="selectedQuestions.selected"
+  (change)="OnCheckboxSelect(selectedQuestions, $event)"></mhe-checkbox>
+</div>
+</div>
+<div id="droppedTablerowId{{selectedQuestions.index}}" class="p-all-0 col-sm-5 col-lg-5 col-md-5 col-xl-5">
+  <div class="form-group mt-4 question-title">
+    <label id="droppedQuestionId{{selectedQuestions.index}}" title="{{selectedQuestions.title}}" [innerHtml]="selectedQuestions.title | truncate:[50, '...'] | linebreak:36"
+      (click)="getOnlinePreviewUrl(selectedQuestions.onlinePreview,selectedQuestions.index)"></label>
+  </div>
+</div>
+<div id="droppedTablerowId{{selectedQuestions.index}}" class="p-all-0 col-sm-2 col-lg-2 col-md-2 col-xl-2 question-margin-type">
+  <div id="droppedTitleId{{selectedQuestions.index}}" title="{{selectedQuestions.typeDesc}}" [innerHtml]="selectedQuestions.typeDesc | truncate:[8, '...']">
+  </div>
+</div>
+<div id="droppedTablerowId{{selectedQuestions.index}}" class="p-all-0 col-sm-2 col-lg-2 col-md-2 col-xl-2 points-padding">
+  <div style="position: relative;top: 5px; ">
+<div class="ahe-ui form-group select-point" id="question-points">
+  <!-- <input [(ngModel)]="selectedQuestions.points" id="question-points{{selectedQuestions.index}}"
+                            class="form-control remove-increment-icon" (ngModelChange)="pointsChanged($event)"
+                            (focusout)="validatePoints($event)" type="text" maxlength="7"> -->
+  <mhe-input id="question-points{{selectedQuestions.index}}" [(ngModel)]="selectedQuestions.points" (ngModelChange)="pointsChanged($event)"
+    type="text" (focusout)="validatePoints($event)" maxlength="7"></mhe-input>
+</div>
+</div>
+</div>
+<div id="droppedTablerowId{{selectedQuestions.index}}" class="p-all-0 col-sm-1 col-lg-1 col-md-1 col-xl-1 question-margin">
+  <div id="droppedKebabId{{selectedQuestions.index}}">
+    <kebab-component [collection]="selectedQuestions" (pinUnpinQuestion)="pinUnpinQuestion($event)" [checked-questions]="sortedQuestionsList()"
+      [disableDelete]="true" [kebabMenuItems]="kebabMenu" (softDelete)="softSourceDelete($event)"></kebab-component>
+  </div>
+</div>
+</div>
+</div>
+<div *ngIf="!selectedQuestionsListObj.length" style="padding: 10px 0px 0px 35px;"> No questions have been added to this test yet
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+
+<print-preference *ngIf="step==='step2'" [collection_id]="collectionId"></print-preference>
+<div class="col-md-12 col-lg-12 col-xl-12 text-center footer-{{step}}">
+  <app-footer [currentStep]="step"></app-footer>
+</div>
+
+<!--  Basic single button confirmation modal -->
+
+<modal-component *ngIf="modalShow" [message]="message" [size]="size" [modal-opt-option]="showModal" (modalOptOptionEvent)="modalOptOut($event)"
+  (modalOk)="modalOkJob()" (modalCancel)="modalCancelJob()"></modal-component>
+<modal-component *ngIf="alertModalShow" [message]="alertMessage" [size]="size" [modal-opt-option]="showModal" (modalOk)="modalOkJob()"
+  (modalCancel)="modalCancelJob()"></modal-component>
+<preview-modal-component *ngIf="closeModalPopUp" [header]="Preview" [preview-url]="previewUrl" [question-index]="qIndex"
+  (closeModal)="closeModal($event)"></preview-modal-component>

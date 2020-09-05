@@ -1,0 +1,257 @@
+#source-select{    
+    #select-bank{
+      background-color: #fafafa;
+      border-right: 1px solid #bdbdbd;
+    }    
+}
+.handle{
+  position: relative;
+  top: 4px;
+}
+.sort-container{
+  position: relative;
+  margin-left: 5px;
+  .fa{
+    color: #0c0c0c;
+  }
+  .fa-caret-down, .fa-caret-up{
+    position: absolute;
+    height: 5px;
+    line-height: 5px;      
+  }
+  .fa-caret-up{
+    top: 0;
+  }
+  .fa-caret-down{
+    bottom: 0;    
+  }
+}
+.ahe-ui-checkbox{
+  cursor: pointer;
+}
+.accordion
+{
+cursor: pointer;
+position:center;
+border-radius:25px;
+border-bottom: 5px;
+}
+
+::ng-deep .select-checkbox > label {
+  margin: 7px !important;
+}
+.ahe-ui-table thead th, .dpg-ui-table thead th {
+  background-color: #fff;
+  color: #46707d;
+  border-bottom: 1px solid #d1dbde;
+}
+.selected-question-container{
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #bdbdbd;
+}
+#selected-question-header{
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+#question-bank-header{
+  padding: 3px 0px 0px 32px;
+  color: #e4e4e4;
+  background-color: #777777;
+}
+#add-filter{
+  color: #e4e4e4;
+  background-color: #ffffff;
+  .row{
+    height: 47px;
+    margin: 0px;
+    padding-top: 5px;
+    border: 1px solid #c3c3c3;
+  }
+}
+
+
+.row1 {
+   display: flex; //Chrome
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  }
+
+
+
+#bank-name{
+  border: 1px solid white;
+  height: auto;
+  border-radius: 4px;
+  padding-top: 3px;
+  a{
+    color: #ffffff;
+  }
+}
+
+.bank-name{
+    display: inline-block;
+    padding: 15px;
+    width: 100%;    
+    .change-bank{
+      width: 20%;
+    }
+}
+.source-bank{
+  background-color: #C1CFD4;
+  height: 34px;
+  width: 100%;
+  margin: 0;
+  padding-top: 6px;
+  border-radius: 5px;
+}
+.source-filter{
+  cursor: pointer;
+}
+
+
+
+.remove-increment-icon::-webkit-inner-spin-button, 
+.remove-increment-icon::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+  /******* Table style starts *******/
+  /** Table styles **/
+.fixed_header {
+  width: 100%;
+  display: table;
+  thead {
+    display: table; /* to take the same width as tr */
+    width: calc(100%); /* - 17px because of the scrollbar width */
+  }  
+  tbody {
+    display: block; /* to enable vertical scrolling */
+    overflow-y: auto; /* keeps the scrollbar even if it doesn't need it; display purpose */
+  }
+}
+
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  word-break: break-all; /* 4. */
+}
+
+.fixed_header tr {
+  display: table; /* display purpose; th's border */
+  width: 100%;
+}
+
+.fixed_header th:nth-child(1),td:nth-child(1){
+    width: 60%;
+}
+.fixed_header th:nth-child(2),td:nth-child(2){
+    width: 23%;
+}
+.fixed_header th:nth-child(3),td:nth-child(3){
+  width: 12%;
+}
+.fixed_header th:nth-child(4),td:nth-child(4){
+  width:5%;
+}
+  /******* Table style end *******/
+
+
+  .modal-content{
+    z-index: 1010;
+  }
+
+  .modal-dialog{
+    position: fixed;
+    top: 50%;
+    width: 300px;
+    z-index: 1010;
+    margin: 0px auto;
+    transform: translateY(-50%);
+    left: calc(50% - 150px);
+  }
+
+  .question-list-table{
+    display: table;    
+    height:85%;
+    overflow-y:hidden;
+    .headerRow{
+      height:15%;
+      border:1px solid #bdbdbd;
+      .title-heading-margin{
+        margin-top: 9px
+      }
+    }
+    .bodyRow{
+      border:1px solid #bdbdbd;
+      overflow-y: auto;
+      .question-row{
+        background: #fff;
+        border-bottom: 1px solid #d1dbde;
+        .question-margin{
+          margin-top:6px;
+          padding-top:9px;
+        }
+        .question-margin-type{
+          margin-top:6px;
+          padding-top:12px;
+        }
+      }
+    }
+  }
+
+  .select-point{
+    width: 67%
+  }
+  .handles{
+    cursor: move;
+  }
+  
+.footer-step2{
+    position: fixed;
+    bottom: 0;
+}
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+.question-title {
+  label {
+    &:hover{
+    cursor: pointer;
+    color :#007c91;
+    text-decoration: underline;
+  }
+}
+}
+.qCheckboxHandler{
+  position: relative;
+  top: 2px;
+  label{
+    padding-bottom:20px;
+  }
+}
+.points-padding{
+  padding-top: 7px;
+}
+
+
+.leftPanelCollapse{
+left: 590px;
+position: relative;
+cursor: pointer;
+}
+
+.close-button{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    float: right;
+    position: relative;
+    bottom: 10px;
+}
+

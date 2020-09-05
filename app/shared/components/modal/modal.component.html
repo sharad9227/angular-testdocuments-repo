@@ -1,0 +1,32 @@
+<div *ngIf="modalOptOption" class="ahe-ui-alert-modal" id="okCancelModal" role="dialog" tabindex="-1">
+  <div class="modal-overlay">
+    <div class="modal-container-new">
+      <div class="modal-dialog" role="document" [style.width.px]="size.width">
+        <div class="modal-content">
+          <div class="modal-body">
+            {{message}}
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="align-left btn btn-primary btn-lg" data-dismiss="modal" (click)="closeModalDialog()">
+              No
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" (click)="closeAndSave()">
+              Yes
+            </button>   -->
+            <!-- <mhe-button buttonText="Opt out" [purpose]="_buttonPurpose.Secondary" class="align-left"(click)="optOutModalForRemove()"></mhe-button> -->
+            <mhe-button buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" class="align-left" data-dismiss="modal" (click)="closeModalDialog()"></mhe-button>
+            <mhe-button buttonText="Ok" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="closeAndSave()"></mhe-button>            
+          </div>
+          <div *ngIf="modalOptOption" class="modal-footer">
+              <!-- <label for="option_1" class="ahe-ui-checkbox">
+                  <input type="checkbox" id="option_1" value="First Option" name="First Horizontal Option" (click)="optOutModalForRemove($event)">
+                  <span>Don't show this message again</span>
+              </label> -->
+              <mhe-checkbox id="opt-out" [checked]="selectedOptOut.selected" (change)="optOutModalForRemove($event)" value="opt-out" name="opt-out">
+                  Don't show this message again
+              </mhe-checkbox>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

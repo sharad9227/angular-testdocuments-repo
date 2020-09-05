@@ -1,0 +1,92 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-lg-1">
+
+    </div>
+    <div class="col-md-10 col-lg-10 mt-4 ml-5">
+      <div class="row">
+        <div class="col-md-12 col-lg-12 page-title ">
+          <header class="workspace_header">
+            tests I created
+          </header>
+        </div>
+      </div>
+
+      <div class="row header-row buttonsPanel ahe-ui-action-bar">
+        <div class="col-md-3 col-lg-3 mt-2" style="padding: 0px;">
+          <mhe-button buttonText="+ Create New" [routerLink]="['/editAssessment', 'create']" [purpose]="_buttonPurpose.Secondary"></mhe-button>
+        </div>
+
+        <div class="col-md-8 col-lg-8 text-right mt-2" style="padding: 0px;">
+          <search-component (valueChange)='displayInputText($event)'></search-component>
+        </div>
+        <div class="refreshDiv mt-2 btn btn-icon" (click)="refreshList()">
+          	<i id="refreshSpinner" class="m-right-10 fa fa-lg fa-refresh"></i>
+        </div>
+      </div>
+
+      <div class="row h-20 justify-content-center font-color collection-list-header">
+        <div class="col-md-5 col-lg-5">
+          <div (click)="sort('collection_title')">
+            <label class="mt-3 cursor-style">Title</label>
+            <div class="icon-container-title">
+              <i class="dpg-icon dpg-icon-system-sort-white cursor-style"></i>
+            </div>              
+            <!-- <span _ngcontent-c14="" class="sort-btn ahe-icon ahe-icon-system-sort-up-white"></span> -->
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 text-right">
+          <div (click)="sort('modified')" class="align-left"><!--sortColumn [sortKey]="'status'" [data]="assessmentListdata.collections"-->
+            <label class="mt-3 cursor-style">Availability</label>
+            <div class="icon-container-avl">
+              <i class="dpg-icon dpg-icon-system-sort-white cursor-style"></i>
+            </div>   
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 text-right">
+          <div (click)="sort('modified')" class="align-left">
+            <label class="mt-3 cursor-style">Date modified</label>
+            <div class="icon-container">
+              <i class="dpg-icon dpg-icon-system-sort-white cursor-style"></i>
+            </div>   
+          </div>
+        </div>
+        <div class="col-md-1 col-lg-1 text-right">
+        </div>
+      </div>
+      <div id="assessment-list" *ngIf="assessmentListdata.collections != undefined">
+        <div class="row1 h-20 border-bottom" *ngFor="let assessment of assessmentListdata.collections"><!--| orderBy: {property: column, direction: direction} | paginate: { itemsPerPage: itemsPerPage, currentPage: pageNumber} -->
+          <div class="col-md-5 col-lg-5 table-row-container">
+            <div class="table-row-child">
+              <i class="fa fa-file-text-o icon-position"></i>
+              <label class="ml-2" title="{{assessment.collection_title}}" [innerHtml]="assessment.collection_title | truncate:[50, '...'] | linebreak:36"></label>
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3 text-right">
+            <div class="form-group mt-3 align-left">
+              <label *ngIf="(assessment.qtiStatus == 'pending' || assessment.docxStatus == 'pending')" class="assesment-position textstyle status">Pending</label>
+              <label *ngIf="(assessment.qtiStatus == 'available')" class="assesment-position status"><a class="ahe-ui-link cursor-pointer" (click)='downloadFile(assessment.collection_id, qti, assessment.downloadQTI)'>QTI</a></label>
+              <label *ngIf="(assessment.docxStatus == 'available')" class="assesment-position status"><a class="ahe-ui-link cursor-pointer" (click)='downloadFile(assessment.collection_id, docx, assessment.downloadDOCX)'>DOCX</a></label> 
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3 text-right table-row-container">
+            <div class="table-row-child align-left">
+              <label class="assesment-position">{{assessment.modified | date:"MMM d, y, h:mm:ss a"}}</label>
+            </div>
+          </div>
+          <div class="col-md-1 col-lg-1 text-right table-row-container">
+            <div class="table-row-child">
+              <kebab-component [collection]="assessment" [kebabMenuItems]="kebabMenu" (renameCollection)="renameCollection($event)"
+                [message]="message" (refreshList)="populateTestList()"></kebab-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row h-20 mt-5 mb-5 justify-content-center align-items-center">
+        <mhe-pager role="navigation" [length]="collectionLength" [pageIndex]="pageNumber" [pageSize]="itemsPerPage" (page)="pageChanged($event)">
+        </mhe-pager>
+      </div>
+    </div>
+  </div>
+</div>

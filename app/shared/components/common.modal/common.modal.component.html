@@ -1,0 +1,24 @@
+<div class="ahe-ui-alert-modal" id="common-modal" role="dialog" tabindex="-1">
+  <div class="modal-overlay">
+    <div class="modal-container-new">
+      <div class="modal-dialog" role="document" [style.width.px]="size.width">
+        <div class="modal-content">
+          <div class="modal-header">{{header}}</div>
+          <div class="modal-body">
+            <ng-content></ng-content>
+          </div>
+          <div class="modal-footer-new">
+            <!-- <button type="button" class="align-left btn btn-secondary btn-lg" data-dismiss="modal" (click)="closeModalDialog()">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" (click)="closeAndSave()">
+              Confirm
+            </button> -->
+            <mhe-button buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" class="align-left" data-dismiss="modal" (click)="closeModalDialog()"></mhe-button>
+            <mhe-button buttonText="Confirm" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="closeAndSave()"></mhe-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

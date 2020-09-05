@@ -1,0 +1,203 @@
+{
+    "collection_id": 123633,
+    "references": [
+        {
+        		"sequence" : "1",
+            "points": "10.1",
+            "ezid": "12506098847394700",
+            "qid": "12506098849677000",
+            "title": "Chapter 01 Test Bank Questions",
+            "typeDesc": "Multiple Choice",
+            "algo": false,
+            "pinned": true,
+            "onlinePreview": "https://ezto-dev.mheducation.com/hm.tpx?todo=preview&tid=12392140377176300&qid=12392140379102600&key=590ab9f3c089da919fb9ecf991fce1b5",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Knowledge",
+                    "categoryId": "13252698032317806"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                }
+            ]
+        },
+        {
+            "sequence" : "2",
+            "points": "9.4",
+            "ezid": "12506098847394700",
+            "qid": "12506098849134200",
+            "title": "Chapter 01 Test Bank Questions",
+            "typeDesc": "True / False",
+            "algo": true,
+            "pinned": true,
+            "onlinePreview": "https://ezto-dev.mheducation.com/hm.tpx?todo=preview&tid=12392140377176300&qid=12392140379102600&key=590ab9f3c089da919fb9ecf991fce1b5",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Understanding",
+                    "categoryId": "13252698032319985"
+                }
+            ]
+        },
+        {
+            "sequence" : "3",
+            "points": "8",
+            "ezid": "12506098847394700",
+            "qid": "12506098849134200",
+            "title": "Chapter 01 Test Bank Questions",
+            "typeDesc": "Check all that apply",
+            "algo": true,
+            "pinned": false,
+            "onlinePreview": "https://ezto-dev.mheducation.com/hm.tpx?todo=preview&tid=12392140377176300&qid=12392140379102600&key=590ab9f3c089da919fb9ecf991fce1b5",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Understanding",
+                    "categoryId": "13252698032319985"
+                }
+            ]
+        },
+        {
+            "sequence" : "4",
+            "points": "10",
+            "ezid": "12506098847394700",
+            "qid": "12506098849134200",
+            "title": "Very very very very long title to test Chapter 01 Test Bank Questions",
+            "typeDesc": "Multiple Choice",
+            "algo": true,
+            "pinned": false,
+            "onlinePreview": "https://ezto-dev.mheducation.com/?todo=preview&tid=12506098847394700&qid=12506098849134200&key=2f1277024335b405fcdf6f51591c0877",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Understanding",
+                    "categoryId": "13252698032319985"
+                }
+            ]
+        },
+        {
+            "sequence" : "5",
+            "points": "5",
+            "ezid": "12506098847394700",
+            "qid": "12506098849134200",
+            "title": "Very very very very long title to test Chapter 01 Test Bank Questions",
+            "typeDesc": "Multiple Choice",
+            "algo": false,
+            "pinned": false,
+            "onlinePreview": "https://ezto-dev.mheducation.com/?todo=preview&tid=12506098847394700&qid=12506098849134200&key=2f1277024335b405fcdf6f51591c0877",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Understanding",
+                    "categoryId": "13252698032319985"
+                }
+            ]
+        },        
+        {
+            "sequence" : "13",
+            "points": "5",
+            "ezid": "12506098847394700",
+            "qid": "12506098849134200",
+            "title": "Very very very very long title to test Chapter 01 Test Bank Questions",
+            "typeDesc": "Multiple Choice",
+            "algo": false,
+            "pinned": false,
+            "onlinePreview": "https://ezto-dev.mheducation.com/?todo=preview&tid=12506098847394700&qid=12506098849134200&key=2f1277024335b405fcdf6f51591c0877",
+            "metadataList": [
+                {
+                    "category": "Section",
+                    "tag": "Economics: Studying Choice in a World of Scarcity",
+                    "categoryId": "13252698032322767"
+                },
+                {
+                    "category": "AACSB",
+                    "tag": "Analytical Skills",
+                    "categoryId": "13252698032319955"
+                },
+                {
+                    "category": "Learning Objective",
+                    "tag": "1-1",
+                    "categoryId": "13252698032317834"
+                },
+                {
+                    "category": "Bloom's",
+                    "tag": "Understanding",
+                    "categoryId": "13252698032319985"
+                }
+            ]
+        }
+    ]
+}

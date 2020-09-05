@@ -1,0 +1,16 @@
+{
+    "collection_id": 123633,
+    "creation": "13 Dec 2018 02:04:36 PM",
+    "modified": "13 Dec 2018 02:05:41 PM",
+    "collection_title": "assesment 11171571",
+    "pendingQTI": false,
+    "pendingDOCX": false,
+    "downloadQTI": "sampleQTI7.docx",
+    "downloadDOCX": "sampleDocx7.zip",
+    "status": "qtiAndDocx",
+    "questionsType": {
+        "Algo_count": 2,
+        "MC_count": 1,
+        "TF_count": 1
+    }
+}

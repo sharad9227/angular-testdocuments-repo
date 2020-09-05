@@ -1,0 +1,127 @@
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-xl-6">
+        <div class="row">
+          <div class="col-md-5 col-lg-5 col-xl-5">
+            <!-- <button id="cancel" class="btn btn-secondary w-100" type="button" (click)="cancel()" >Cancel</button> -->
+            <mhe-button id="footer-cancel" buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" (click)="cancel()"></mhe-button>
+          </div>
+          <div class="col-md-5 col-lg-5 col-xl-5">
+            <!-- <button id="save-and-exit" class="btn btn-primary w-100" type="button" (click)="saveAndExit()">Save and Exit</button> -->
+            <mhe-button id="footer-exit" buttonText="Save and Exit" [purpose]="_buttonPurpose.Primary" (focusout)="resetSaveFlag()" (click)="saveAndExit()"></mhe-button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-6">
+        <div class="row">
+          <div class="col-md-5 col-lg-5 col-xl-5">
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2">
+          </div>
+          <div class="col-md-5 col-lg-5 col-xl-5" [hidden]="step=='step2'">
+            <!-- <button id="save-and-continue" [disabled]="!continueEnable" class="btn btn-primary w-100" type="button" (click)="saveAndContinue()" >Continue</button> -->
+            <mhe-button id="continue" buttonText="Continue" [purpose]="_buttonPurpose.Secondary" [disabled]="!continueEnable" (click)="saveAndContinue()"></mhe-button>
+          </div>
+          <div class="col-md-5 col-lg-5 col-xl-5" [hidden]="step=='step1'">
+            <!-- <button id="submit" class="btn btn-primary w-100" type="button" (click)="submit()" >Submit</button> -->
+            <mhe-button buttonText="Submit" [purpose]="_buttonPurpose.Secondary" (click)="submit()"></mhe-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="confirmMessageData.Message != ''" class="ahe-ui-alert-modal" id="okCancelModal" role="dialog" tabindex="-1">
+  <div class="modal-overlay"></div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{confirmMessageData.Message}}
+      </div>
+      <div class="modal-footer">
+       	<!-- <button type="button" class="align-left btn btn-primary btn-lg" data-dismiss="modal" (click)="closeConfirmModal(false)">
+          No
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" (click)="closeConfirmModal(true)">
+          Yes
+        </button> -->
+        <mhe-button class="align-left" buttonText="No" [purpose]="_buttonPurpose.Secondary" data-dismiss="modal" (click)="closeConfirmModal(false)"></mhe-button>
+        <mhe-button buttonText="Yes" [purpose]="_buttonPurpose.Secondary" data-dismiss="modal" (click)="closeConfirmModal(true)"></mhe-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="alertMessageData.Message != ''" class="ahe-ui-alert-modal" id="okModal" role="dialog" tabindex="-1">
+  <div class="modal-overlay"></div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{alertMessageData.Message}}
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" (click)="closeModal()">
+          OK
+        </button> -->
+        <mhe-button class="align-left" buttonText="OK" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="closeModal()"></mhe-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="alertModalShow" class="ahe-ui-alert-modal" id="okModal" role="dialog" tabindex="-1">
+  <div class="modal-overlay"></div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{alertMessage}}
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" (click)="closeAlertModal()">
+          OK
+        </button> -->
+        <mhe-button class="align-left" buttonText="OK" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="closeAlertModal()"></mhe-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showEmailModal" class="ahe-ui-alert-modal" id="showEmailModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-copy" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-new">
+                        <label>Confirmation</label>
+                    </div>
+                    <div class="modal-body-copy ahe-ui form-group row">
+                        <div class="mt-1 ml-2">Your request has been submitted.</div>
+                        <div class="ml-2">
+                        	<strong>Review</strong><br/>
+                        	<div>
+                        		<label class="ahe-ui-checkbox">
+								             <input type="checkbox" id="sendMail" [(ngModel)]="sendMail" [value]="sendMail" (change)="sendMailPref($event)">
+								             <span class="cursor-pointer">Send an email when test becomes available.</span>
+								           </label>
+                        	</div>
+                        	<div class="ml-4 mt-2 ahe-ui form-group no-margin">
+								          	<strong>Email:</strong>
+									         	<input type="text" maxlength="120" id="userEmailId" class="ml-2 mt-2 form-control textWidth"
+                                value="{{userEmailId}}" [(ngModel)]="userEmailId" [disabled]="emailIdDisabled"/>
+									        </div>
+									        <div *ngIf="showEmailError" class="ml-2 mt-1" style="color:red; border-radius: 5px;">
+                            Please provide a valid email id.
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer-new">
+	                    <mhe-button buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" class="align-left" data-dismiss="modal" (click)="cancelEmail()"></mhe-button>
+	            				<mhe-button buttonText="Confirm" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="confirmEmail()"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

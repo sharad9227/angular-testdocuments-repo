@@ -1,0 +1,106 @@
+{
+    "sourceInfo": {
+        "isbn": "0000045678",
+        "author": "Grewal",
+        "isbn_title": "Marketing",
+        "edition": "2",
+        "banks": [
+            {
+                "ezid": "12392191929127300",
+                "title": "Chapter 01 Test Bank - Overview of Marketing",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392192290547600",
+                "title": "Chapter 02 Test Bank - Developing Marketing Strategies and a Marketing Plan",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392196272573800",
+                "title": "Chapter 03 Test Bank - Marketing Ethics",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392196537024600",
+                "title": "Chapter 04 Test Bank - Analyzing the Marketing Environment",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392198098895800",
+                "title": "Chapter 05 Test Bank - Consumer Behavior",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392198479893000",
+                "title": "Chapter 06 Test Bank - Business-to-Business Marketing",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392201007139900",
+                "title": "Chapter 07 Test Bank - Global Marketing",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392201320486100",
+                "title": "Chapter 08 Test Bank - Segmentation, Targeting, and Positioning",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392216374022500",
+                "title": "Chapter 09 Test Bank - Marketing Research and Information Systems",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392216720753100",
+                "title": "Chapter 10 Test Bank - Product, Branding, and Package Decisions",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392138941334200",
+                "title": "Chapter 11 Test Bank - Developing New Products",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392139299842800",
+                "title": "Chapter 12 Test Bank - Services: The Intangible Product",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392140377176300",
+                "title": "Chapter 13 Test Bank - Pricing Concepts for Establishing Value",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392140879442300",
+                "title": "Chapter 14 Test Bank - Strategic Pricing Methods",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392148705075500",
+                "title": "Chapter 15 Test Bank - Supply Chain Management",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392149030161900",
+                "title": "Chapter 16 Test Bank - Retailing and Multi-Channel Marketing",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392169482566000",
+                "title": "Chapter 17 Test Bank - Integrated Marketing Communications",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "12392169804791700",
+                "title": "Chapter 18 Test Bank - Advertising and Sales Promotions",
+                "pathString": "0000045678"
+            },
+            {
+                "ezid": "13252698032220435",
+                "title": "Chapter 19 Test Bank - Personal Selling and Sales Management",
+                "pathString": "0000045678"
+            }
+        ]
+    },
+    "Message": "SourceInfo retrieved successfully."
+}

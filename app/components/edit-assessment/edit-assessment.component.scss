@@ -1,0 +1,205 @@
+.material-icons-down-icon{
+	top: 7px;
+    position: relative;
+    left: 4px;
+	color:white;
+}
+.caret-icons-up-icon{
+	top: -2px;
+    position: relative;
+    left: -5px;
+    color: white;
+}
+.caret-drop-icons-up-icon{
+	top: -2px;
+    position: relative;
+    left: -5px;
+    color: white;
+}
+.font-color{
+	color:white;
+	height: 42px;
+}
+.border-bottom{
+	border-bottom: 1px solid #ddd;
+}
+.assesment-position{
+	position: relative;
+  top: 7px;
+}
+
+
+.row1 {
+   display: flex; //Chrome
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  }
+
+
+
+
+
+.points-position{
+	position: relative;
+  top: 7px;
+  width: 70px !important;
+  height: 32px;
+}
+.page-link{
+	background-color: #ddd;
+	color: black;
+    border: 5px solid white;
+    &:hover{
+        background-color: black;
+	    color: white;
+	    border: 5px solid white;
+    }
+}
+.edit-selectall{
+    position: relative;
+    padding-bottom: 36px;
+}
+.material-icons-pagination{
+	top: 16px;
+    position: relative;
+}
+.button-position{
+	position: relative;
+    bottom: 2px;
+}
+.btn-secondary {
+    color: black;
+    background-color: #ddd;
+    border: none;
+}
+.textstyle {
+    background-color: #9e9c9c;
+    font-weight: normal;
+    border-radius: 22px;
+    width: auto;
+    height: auto;
+    padding: 5px 20px 5px 20px;
+    font-size: 13px;
+    color: white;
+
+    a{
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+.search-icon-style{
+	background-color: #ddd;
+    font-weight: bold;
+    border-radius: 4px;
+    height: 30px;
+    padding: 6px 12px 5px 18px;
+    font-size: 15px;
+    color: black;
+	margin-left: 10px;
+}
+
+.cursor-style{
+    cursor: pointer;
+}
+.edit-list{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.page-title{
+	font-size: 20px;
+	border-bottom: 5px solid #ddd;
+}
+
+#source-picker{    
+    #select-bank{
+      background-color: #fafafa;
+      border-right: 1px solid #bdbdbd;
+    }    
+}
+
+
+  /******* Table style starts *******/
+  .css-flex-table {
+    display: flex;
+    width: 80%;
+    }
+    
+    .css-flex-table-header,
+    .css-flex-table-body {
+    display: flex;
+    flex: 0 0 100%;
+    }
+    
+    .css-flex-table,
+    .css-flex-table-body {
+    flex-wrap: wrap;
+    }
+    
+    .css-flex-table-header div {
+    padding: 6px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(191, 191, 191);
+    }
+    
+    .css-flex-table-header div,
+    .css-flex-table-body div {
+    flex: 0 1 100px;
+    padding: 0 6px;
+    border: 1px solid rgb(255, 255, 255);
+    box-sizing: border-box;
+    }
+    
+    .css-flex-table-header div:nth-of-type(4n),
+    .css-flex-table-body div:nth-of-type(4n) {
+    flex: 0 1 calc(100% - 308px);
+    }
+  /******* Table style end *******/
+
+.centerText{
+	text-align: center;
+    font-weight: bold;
+    padding-top: 7%;
+    font-size: 18px;
+}
+
+.center{
+	margin-left: 38%;
+    padding-top: 5%;
+}
+  
+ .zero-state{
+    position: relative;     
+	background-color: #e6e5e5;
+}
+.align-middle{
+    position: absolute;
+    left:46%;
+    top:44%
+}
+::ng-deep .ahe-ui-checkbox > input[type='checkbox'] + span::before {
+    background-color: white;
+}
+.footer-step2{
+    position: fixed;
+    bottom: 0;
+}
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+.handles{
+    cursor: move;
+  }
+
+  .question-title {
+      label {
+        &:hover{
+        cursor: pointer;
+        color :#007c91;
+        text-decoration: underline;
+      }
+    }
+  }

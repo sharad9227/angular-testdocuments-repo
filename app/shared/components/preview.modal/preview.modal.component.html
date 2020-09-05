@@ -1,0 +1,33 @@
+<div class="ahe-ui-alert-modal" id="previewModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay" id="previewModalOverlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-more-info-new">
+                <div class="modal-content preview-content">
+                    <div class="modal-header-new">
+                        Preview
+                        <button aria-label="close dialog" class="close" data-dismiss="modal" type="button" (click)="closePreviewModal()">
+                            <span class="ahe-icon ahe-icon-close-white"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body-new">
+                        <div class="question-body">
+                            <div class="question-sequence">
+                                <div class="ml-3" style="padding-top:6px;"><strong>Question {{index}}</strong></div>
+                            </div>
+                            <div class="ml-4 mt-2" style="font-size: 18px">
+                                <span><strong>{{type}}</strong></span>
+                            </div>
+                            <div class="ml-4 mt-2">
+                                <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(onlinePreview)' class="iframe-body-multiple preview-body"
+                                    id="previewIframe"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer-new">
+                        <mhe-button buttonText="Print" [purpose]="_buttonPurpose.Primary" class="align-left"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

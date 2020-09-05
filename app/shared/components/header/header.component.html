@@ -1,0 +1,40 @@
+<div id="assessment-header">
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+      <div class="left-header-items">
+        <ul class="navbar-nav mr-auto">
+          <li class="p-w-20 cursor-pointer">
+            <i class="fa fa-chevron-left chevron-size" aria-hidden="true" (click)="cancel()"></i>
+          </li>
+          <li *ngIf="!show" class="medium-font">
+            <div title="{{headerName}}" [innerHtml]="headerName | truncate:[50, '...'] | linebreak:36"></div>
+          </li>
+          <li *ngIf="show">
+            <!-- <input id="rename-text" [(ngModel)]="headerName" type="text" clickOutside (clickOutside)="!show = show"
+              (ngModelChange)="modelChanged($event)" maxlength="80" /> -->
+            <mhe-input [id]="'rename-text'" [placeholder]="placeholder" [(ngModel)]="headerName" [type]="inputType.Text" (clickOutside)="!show = show" (ngModelChange)="modelChanged($event)" [maxlength]="80"></mhe-input>
+          </li>
+          <li (click)="show = !show"><span><a id="renameHeader" href="javascript:void(0)">Rename</a></span></li>
+          {{error}}
+        </ul>
+      </div>
+      <div class="right-header-items">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <strong>Total Points: </strong>{{headerData.totalPoints}}
+          </li>
+          <li class="nav-item">
+            <strong>Total Questions: </strong> {{headerData.totalQuestions}}
+          </li>
+          <li *ngIf="headerData.previewButton != ''" class="nav-item">
+            <div class="previewTitle"><span class="preview-text-color">{{headerData.previewButton}}</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<common-modal-component *ngIf="showConfirmationHeader" [size]="size" [header]="modalHeader" (modalOk)="modalOkJob()"
+  (modalCancel)="modalCancelJob()">
+  {{alertMessage}}
+</common-modal-component>

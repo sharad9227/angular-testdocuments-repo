@@ -1,0 +1,57 @@
+<div id="mainPanel" class="hide" #mainPanel>
+  <span class="filter-header">Filter By...</span><span style="float: right" (click)="closeFilter('mainPanel')" class="pointer-cursor">X</span>
+  <hr />
+  <div class="pointer-cursor">
+    <div #mainPanelItem (click)="OpenPanel('question', 0, '', $event)" class="col-md-12 col-lg-12 col-xl-12 cq-box">Questions type <div class="count-box">{{qCheckBoxCount}}</div><div class="menu-icon"><i class="fa fa-angle-right" aria-hidden="true"></i></div></div>
+    <div class="omenu hide" id="ques" #questionPanel>
+      <span class="filter-header">Question Type...</span>      
+      <hr />
+      <div style="max-height: 5px;">
+          <a ng-href="#" [hidden]="!selectAllItems" (click)="selectAll('question', 0)" class="select-all">Select all</a>
+          <a ng-href="#" [hidden]="selectAllItems" (click)="deselectAll('question', 0)" class="select-all">Deselect all</a>    
+      </div>
+      <br />
+      <div *ngFor="let question of questionList.itemInfo.typesAvailable; let i = index" style="display:hidden;padding:5px;font-size: 13px;">
+          <input #qCheckbox name="qCheckbox" value="{{question}}" id="{{'qCheckbox'+i}}" 
+            class="qCheckbox" 
+            type="checkbox" 
+            style="margin-right:5px;" 
+            [(ngModel)]="question.checked"            
+            (change)="onFilterChange($event, question, 'question')"                          
+            (click)="clickCount($event, 'question', i)">{{question}}
+      </div>        
+    </div>
+    <input #inputQues type="hidden" id="inputQues" value="0" [(ngModel)]="qCheckBoxCount" />                  
+  </div>
+  <div *ngFor="let question of questionList.itemInfo.categories; let i = index">
+      <div id="{{'mainCat' + i}}" class="pointer-cursor">              
+        <div #mainPanelItem (click)="OpenPanel('category', i, items, $event)" class="col-md-12 col-lg-12 col-xl-12 cq-box">
+          {{question.name}} 
+          <div #catCount id="{{'catCount' + i}}" class="count-box">0</div> 
+          <div class="menu-icon">
+            <i class="fa fa-angle-right" aria-hidden="true" style="float: right;"></i>
+          </div>
+        </div>              
+        <div id="{{'cat' + i}}" class="omenu hide"  #items>             
+          <span class="filter-header">{{question.name}}...</span>
+          <hr />
+          <div id="{{'select' + i}}" style="max-height: 5px;">
+            <a ng-href="#" (click)="selectAll('category', i)" class="select-all">Select all</a>
+          </div>
+          <div id="{{'deselect' + i}}" class="hide" style="max-height: 5px;">
+              <a ng-href="#" (click)="deselectAll('category', i)" class="select-all">Deselect all</a>
+          </div>            
+          <br />
+          <div *ngFor="let ques of question.tags;" style="padding:5px;font-size: 13px;">
+              <input #cCheckbox value="{{ques.id}}" class="{{'cCheckbox' + i}}" 
+                type="checkbox" 
+                [(ngModel)]="ques.checked"  
+                style="margin-right:5px;"
+                (change)="onFilterChange($event, ques.id, 'category')" 
+                (click)="clickCount($event, 'category', i)">{{ques.tagName}}
+          </div>
+        </div>
+      </div>
+      <input #inputCat type="hidden" id="{{'inputCat' + i}}" class="inputCat" value="0"/>             
+  </div>       
+</div>

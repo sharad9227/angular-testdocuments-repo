@@ -1,0 +1,97 @@
+{
+	"userCollectionPreference": {
+		"collection_id": 0,
+		"export_type": "qtiPackage",
+		"export_type_value": "d2l",
+		"scramble_with_locked_algo": false,
+		"scramble_with_unlocked_algo": false,
+		"scramble_distractors": false,
+		"no_of_version": 1,
+		"layout_type": 1,
+		"question_spacing": "wide",
+		"start_page_no": 5,
+		"first_page_header": "First page header",
+		"other_page_header": "other page header",
+		"instructions": "Student Name: ____________",
+		"question_type_sort": true,
+		"custom_sort_order": "TF,MC,FB,SA,CA,",
+		"display_question_no": true,
+		"start_question_no": 10,
+		"tf_alignment": "Below-Vertical",
+		"mc_ca_alignment": "Below-Horizontal",
+		"sa_alignment": "3",
+		"sa_blank_alignment": "lines",
+		"continue_answer_key_page_no": "continuePageNo",
+		"answer_blanks": true,
+		"start_answer_key_page_no": 1,
+		"save_as_default": false,
+		"modified_date": 0,
+		"question_header_desc": [{
+			"qType": "TF",
+			"desc": "TRUE/FALSE - Write 'T' if the statement is true and 'F' if the statement is false."
+		}, {
+			"qType": "MC",
+			"desc": "MULTIPLE CHOICE - Choose the one alternative that best completes the statement or answers the question."
+		}, {
+			"qType": "FB",
+			"desc": "FILL IN THE BLANK.  Write the word or phrase that best completes each statement or answers the question."
+		}, {
+			"qType": "SA",
+			"desc": "SHORT ANSWER.  Write the word or phrase that best completes each statement or answers the question."
+		}, {
+			"qType": "CA",
+			"desc": "CHECK ALL THE APPLY. Choose all options that best completes the statement or answers the question."
+		}],
+		"question_info": false,
+		"show_question_header": false,
+		"apply_default_settings": false,
+		"save_preference_only": false
+	},
+	"userDefaultPreference": {
+		"collection_id": 0,
+		"export_type": "document",
+		"scramble_with_locked_algo": true,
+		"scramble_with_unlocked_algo": false,
+		"scramble_distractors": true,
+		"no_of_version": 5,
+		"layout_type": 1,
+		"question_spacing": "wide",
+		"start_page_no": 5,
+		"first_page_header": "First page header",
+		"other_page_header": "other page header",
+		"instructions": "Student Name: ____________",
+		"question_type_sort": true,
+		"custom_sort_order": "TF,MC,FB,SA,CA,",
+		"display_question_no": true,
+		"start_question_no": 10,
+		"tf_alignment": "Below-Vertical",
+		"mc_ca_alignment": "Below-Horizontal",
+		"sa_alignment": "3",
+		"sa_blank_alignment": "lines",
+		"continue_answer_key_page_no": "restartPageNo",
+		"answer_blanks": true,
+		"start_answer_key_page_no": 5,
+		"save_as_default": true,
+		"modified_date": 0,
+		"question_header_desc": [{
+			"qType": "TF",
+			"desc": "TRUE/FALSE - Write 'T' if the statement is true and 'F' if the statement is false."
+		}, {
+			"qType": "MC",
+			"desc": "MULTIPLE CHOICE - Choose the one alternative that best completes the statement or answers the question."
+		}, {
+			"qType": "FB",
+			"desc": "FILL IN THE BLANK.  Write the word or phrase that best completes each statement or answers the question."
+		}, {
+			"qType": "SA",
+			"desc": "SHORT ANSWER.  Write the word or phrase that best completes each statement or answers the question."
+		}, {
+			"qType": "CA",
+			"desc": "CHECK ALL THE APPLY. Choose all options that best completes the statement or answers the question."
+		}],
+		"question_info": false,
+		"show_question_header": true,
+		"apply_default_settings": true,
+		"save_preference_only": false
+	}
+}

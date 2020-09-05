@@ -1,0 +1,50 @@
+
+#assessment-details .table-responsive{
+  border: 1px solid #a5a5a5;
+}
+#assessment-details .table-responsive thead{
+  background-color: #eaeaea;
+}
+.assignment-header{
+  clear: both;
+  border-bottom: 1px solid #dee2e6;
+}
+.assignment-header div{
+  text-align: center;
+  background-color: #eaeaea;
+  font-weight: bold;
+}
+.assignment-body{
+  text-align: center;
+  clear: both;
+  border-bottom: 1px solid #dee2e6;
+}
+.assignment-body:hover{
+  background-color: #eaeaea;
+}
+
+#assessment-details  .column {
+  display: inline-block;
+  padding: 10px;
+}
+#assessment-details  .column-5 {
+  width:5%
+}
+#assessment-details  .column-10 {
+  width:10%
+}
+#assessment-details  .column-20 {
+  width:20%
+}
+#assessment-details  .column-30 {
+  width:30%
+}
+#assessment-details  .column-45 {
+  width:45%
+}
+/* Clear floats after the columns */
+#assessment-details .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

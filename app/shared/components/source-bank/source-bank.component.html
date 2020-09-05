@@ -1,0 +1,55 @@
+<div class="source-container" [style.height.px]="sourcePickerCompHeight">
+  <div id="assessment-details" class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+      <div class="row no-margin">
+        <table class="dpg-ui-table fixed_header">
+          <thead>
+            <tr>
+              <th scope="col">
+                <div class="pl-5">
+                  <!-- <label for="title" class="ahe-ui-checkbox" (click)="sendMessage()">
+                    <input [(ngModel)]="title.selected" (click)="selectAll($event)" type="checkbox" id="title" value="Title"
+                      name="title">
+                    <span class="cursor-pointer">Title</span>
+                  </label>                   -->
+                  <mhe-checkbox class="select-checkbox" [checked]="title.selected" (change)="selectAll($event)"></mhe-checkbox>
+                  <span class="cursor-pointer">Title</span>
+                </div>
+              </th>
+              <th sortColumn class="cursor-pointer" scope="col" (click)="sort('typeDesc')">Type
+                <span class="sort-container">
+                  <i class="fa fa-caret-down material-icons-down-icon cursor-style"></i>
+                  <i class="fa fa-caret-up caret-icons-up-icon cursor-style"></i>
+                </span></th>
+            </tr>
+          </thead>
+          <tbody [style.height.px]="sourcePickerCompHeightBody" *ngIf="questionList && questionList.itemInfo.questions">
+            <tr [ngClass]="similarQuestionsBothPanel.includes(question.qid) ? 'question-dropped' : 'questions-unused'" 
+              *ngFor="let question of questionList.itemInfo.questions | questionFilter: filterList | orderBy: {property: column, direction: direction};let i = index"
+              dnd-draggable [dragEnabled]="true" 
+              [dragData]="[selectedQuestions,[question]]" 
+              [dropZones]="['demo1']">
+              <td class="pl-5 question-list">
+                <div class="question-title">
+                  <!-- <label for="{{i}}" class="ahe-ui-checkbox" (click)="sendMessage()">
+                    <input [(ngModel)]="question.selected" (click)="OnCheckboxSelect(question, $event)" type="checkbox"
+                      id="{{i}}">
+                      <span></span>
+                  </label> -->
+                  <mhe-checkbox class="select-checkbox"  [checked]="question.selected" (change)="OnCheckboxSelect(question, $event)"></mhe-checkbox>
+                  <span title="{{question.title}}" [innerHtml]="question.title | truncate:[50, '...']" (click)="getOnlinePreviewUrl(question.onlinePreview,i)"></span>
+                </div>
+              </td>
+              <td class="p-all-0 question-list">
+                <div>
+                  {{question.typeDesc}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<preview-modal-component *ngIf="closeModalPopUp" [header]="Preview" [preview-url]="previewUrl" [question-index]="qIndex" (closeModal)="closeModal($event)"></preview-modal-component>

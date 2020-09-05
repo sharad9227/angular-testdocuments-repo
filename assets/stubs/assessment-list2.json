@@ -1,0 +1,48 @@
+{
+    "total": 25,
+    "limit": 10,
+    "currentPage": 2,
+    "itemsPerPage": 5,
+    "data": [
+        {
+            "_id": "5968fcad629fa84ab65a5247",
+            "title": "Assessment 6",
+            "status": "Pending",
+            "updatedAt": "2017-07-14T17:17:33.010Z",
+            "createdAt": "2017-07-14T17:17:33.010Z",
+            "__v": 0
+        },
+        {
+            "_id": "5968fcad629fa84ab65a5247",
+            "title": "Assessment 7",
+            "status": "",
+            "updatedAt": "2017-07-14T17:17:33.006Z",
+            "createdAt": "2017-07-14T17:17:33.006Z",
+            "__v": 0
+        },
+        {
+            "_id": "5968fcad629fa84ab65a5247",
+            "title": "Assessment 8",
+            "status": "Pending",
+            "updatedAt": "2017-07-14T17:17:33.006Z",
+            "createdAt": "2017-07-14T17:17:33.006Z",
+            "__v": 0
+        },
+        {
+            "_id": "5968fcad629fa84ab65a5247",
+            "title": "Assessment 9",
+            "status": "",
+            "updatedAt": "2017-07-14T17:17:33.006Z",
+            "createdAt": "2017-07-14T17:17:33.006Z",
+            "__v": 0
+        },
+        {
+            "_id": "5968fcad629fa84ab65a5247",
+            "title": "Assessment 10",
+            "status": "",
+            "updatedAt": "2017-07-14T17:17:33.006Z",
+            "createdAt": "2017-07-14T17:17:33.006Z",
+            "__v": 0
+        }
+    ]
+}

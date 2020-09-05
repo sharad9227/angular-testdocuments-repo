@@ -1,0 +1,188 @@
+.source-container{
+  overflow-y: scroll;
+}
+.hideChildren ~ ul{
+  display: none;
+}
+.line-divider{
+  border-top: 1px solid #bdbdbd;
+  display: flex;
+}
+#sourceFooter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  height: 80px;
+  background-color: #eaeaea;
+  border-top: 1px solid #cccccc;
+}
+ul, #myUL {
+    list-style-type: none;
+  }
+  
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+  
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);  
+  }
+  
+  .nested {
+    display: none;
+  }
+  
+  .active {
+    display: block;
+  }
+
+  /* Checkbox SCSS */
+  .checkbox-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .css-label {
+    cursor: pointer;
+  }
+  .css-checkbox {
+    display: none;
+  }
+  .fa {
+    color: white;
+    line-height: 16px;
+    border-radius: 4px;
+  }
+  .fa-plus {
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    background-color: #006a7c;
+    display: block; 
+  }
+  .fa-minus {
+    padding-top: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    background-color: #006a7c;   
+    display: block; 
+  }
+  .highlight-name{
+    font-weight: 900;
+  }
+  .highlight-bg{
+    background-color: #cecece;
+  }
+  .bank-items :hover{
+    cursor: pointer;
+    font-weight: 900;
+  }
+.padding-align
+{
+    position: relative;
+    top: 2px;
+    padding-right: 5px;
+
+}
+
+.align-folder{
+    top: 3px;
+    position: relative;
+}
+  .modal-dialog-bank-info-new{
+    position: relative;
+    top: 50%;
+    width: 600px;
+    z-index: 1010;
+    margin: 0px auto;
+    transform: translateY(-50%);
+    .modal-content{
+      height: 500px;
+      iframe{
+        height: 378px;
+        width: 552px;
+      }
+    }
+  }
+  .modal-overlay{
+    background-color: rgba(0, 0, 0, 0.2); 
+  }
+  .modal-container-new{
+    position:relative;
+    width:100%;
+    background: transparent;
+    height: 100%;
+  }
+  
+  .modal-header-new{
+    background: #000000;
+      padding: 5px 30px;
+      color: #fff;
+  }
+  
+  .modal-body-new {
+      position: relative;
+      flex: 1 1 auto;
+      padding: 30px 0 0 30px;
+  }
+  
+  .label-info{
+    font-size: 14px;
+      font-weight: bold;
+  }
+  
+  .label-span{
+    font-size: 14px;
+  }
+  
+  .label-question{
+    font-weight: normal;
+      font-size: 12px;
+  }
+  
+  .label-span-question{
+    font-weight: normal;
+      font-size: 12px;
+  }
+  
+  .modal-footer-new {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+    border-top: 1px solid #e9ecef;
+    
+    button{
+      width: 130px;
+    }
+  }
+
+  .bank-info-icon{
+    font-size:20px;
+    color:#006a7c
+  }
+

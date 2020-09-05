@@ -1,0 +1,81 @@
+<div *ngIf="sourceInfoData.sourceInfo != undefined" class="source-container" [style.height.px]="sourcePickerCompHeight">
+    <ul id="myUL">
+        <ul class="active">
+            <li><input type="checkbox" name="a" id="a" class="css-checkbox" #ele (click)="ele.class = ele.class == 'showChildren' ? '' :  'showChildren';checkedBank = !checkedBank"
+                    [ngClass]="{ hideChildren : ele.class == 'showChildren' }">
+                <label for="a" class="css-label p-right-10">
+                    <span [ngStyle]="{'display': checkedBank ? 'none' : 'block' }" class="fa fa-plus"></span>
+                    <span [ngStyle]="{'display': !checkedBank ? 'none' : 'block' }" class="fa fa-minus"></span>
+                    
+                </label>
+                <span class="align-folder" ><i class="ahe-icon ahe-icon-folder"></i></span>
+                <span><b> ISBN: </b>{{sourceInfoData.sourceInfo.isbn_title}}<b> Author: </b>{{sourceInfoData.sourceInfo.author}}<b> Edition: </b>{{sourceInfoData.sourceInfo.edition}}</span>
+                <ul class="active">
+                    <li [ngClass]="{ 'highlight-bg' : this.checkedBank === i }" *ngFor="let bank of sourceInfoData.sourceInfo.banks; let i = index">
+                        <div>
+                            <label for="{{bank.title}}" class="ahe-ui-checkbox bank-items p-ex-left">
+                                <!-- <input type="checkbox" id="{{bank.title}}" name="Assessment bank name"> -->
+                                <span>
+                                    <a tabindex="-1" data-dismiss="modal"  (click)="OnBankInfoSelect(true,bank.ezid,bank.title)" >
+                                    <i class="fa fa-info-circle fa-fw bank-info-icon"></i>
+                                    </a>
+                                </span>
+                                <span class="padding-align">
+                                    <i class="ahe-icon ahe-icon-openfolder"></i></span>
+                                <span #mySelectedBank (click)="OnCheckboxSelect(bank, bank.title, $event, i)" title="{{bank.title}}" [ngClass]="{ 'highlight-name' : this.checkedBank === i }">{{bank.title | truncate:[50, '...']}}</span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ul>
+</div>
+<div>
+    <div class="row mt-3 p-bottom-20">
+        <div class="col-md-12 col-lg-12 col-xl-12 line-divider">
+            <div class="row mt-2" style="margin: 0px 0 0 auto;">
+                    <!-- <button type="button" class="btn btn-secondary m-right-10">Cancel</button>
+                    <button type="button" [disabled]="!selectedBankObj" class="btn btn-primary" [ngClass]="(selectedBankObj)? 'btn btn-primary' : 'btn btn-primary disabled'" (click)="selectBank()">Use source</button> -->
+                    <mhe-button buttonText="Cancel"  [hidden]="panelExpanded" [purpose]="_buttonPurpose.Secondary" class="m-right-10"></mhe-button>
+                    <mhe-button buttonText="Use source" [disabled]="!selectedBankObj" [purpose]="_buttonPurpose.Primary" (click)="selectBank()"></mhe-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showBankInfo != false" class="ahe-ui-alert-modal" id="bankInfo" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-bank-info-new" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-new">
+                        Bank Info
+                    </div>
+                    <div class="modal-body-new">
+                        <ng-container *ngIf="viewBankInfoData"> 
+                            <label class="label-info">Title</label>: 
+                            <span class="label-span">{{bankTitle}}</span>
+                            <br />                          
+                            <span *ngFor="let bankData of viewBankInfoData | keyvalue">                                    
+                                <label class="label-question" *ngIf="bankData.key == 'Algo_count'">Algorithm</label> 
+                                <label class="label-question" *ngIf="bankData.key == 'MC_count'">Multiple Choice</label>
+                                <label class="label-question" *ngIf="bankData.key == 'TF_count'">True False</label>
+                                <label class="label-question" *ngIf="bankData.key == 'FB_count'">Fill in the Blank</label>
+                                <label class="label-question" *ngIf="bankData.key == 'CA_count'">Check all that apply</label>
+                                <label class="label-question" *ngIf="bankData.key == 'SA_count'">Short Answers</label>
+                                : <span class="label-span-question">{{bankData.value}}</span>
+                                <br />
+                            </span>                        
+                        </ng-container>
+                    </div>
+                    <div class="modal-footer-new">
+                        <!-- <button type="button" class="align-left btn btn-lg btn-primary" data-dismiss="modal" (click)="hideBankInfo(false)">
+                            Ok
+                        </button>   -->
+                        <mhe-button buttonText="Ok" [disabled]="!selectedBankObj" [purpose]="_buttonPurpose.Primary" (click)="hideBankInfo(false)"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

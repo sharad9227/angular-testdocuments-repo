@@ -1,0 +1,223 @@
+<div id="kebabMenu" class="dropdown ahe-ui-dropdown dropdown-menu-right" [ngClass]="(showKebab)? 'open' : ''" role="menu">
+    <button type="button" class="btn btn-icon" data-toggle="dropdown" title="Options" [ngClass]="(showKebab) ? 'active' : ''">
+        <i class="ahe-icon ahe-icon-system-kebab"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" [ngClass]="(showKebab)? 'show-kebab' : 'hide-kebab'">
+        <div class="kebab-menu-height list-items-container">
+            <li role="presentation">
+                <a *ngIf="kebabMenu.get_info" class="dropdown-item" role="menuitem" tabindex="-1" data-dismiss="modal"
+                    (click)="viewAssessment(true)">
+                    Get info
+                </a>
+                <a *ngIf="kebabMenu.preview" class="dropdown-item" role="menuitem" tabindex="-1" (click)="showPreview(element)">
+                    Preview
+                </a>
+                <a *ngIf="kebabMenu.pinUnpin" class="dropdown-item" role="menuitem" tabindex="-1" (click)="pinUnpinQuestionEvent(element)">
+                    Pin/Unpin
+                </a>
+                <a *ngIf="kebabMenu.edit" class="dropdown-item" role="menuitem" tabindex="-1" (click)="editAssessment()">
+                    Edit
+                </a>
+                <a *ngIf="kebabMenu.copy" class="dropdown-item" role="menuitem" tabindex="-1" (click)="copyTest()">
+                    Copy
+                </a>
+                <a *ngIf="kebabMenu.rename" class="dropdown-item" role="menuitem" tabindex="-1" (click)="renameModal()">
+                    Rename
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a *ngIf="kebabMenu.print" class="dropdown-item" role="menuitem" tabindex="-1" href="#">
+                    Print
+                </a>
+            </li>
+            <li role="presentation">
+                <a *ngIf="kebabMenu.remove" class="dropdown-item" role="menuitem" tabindex="-1" data-dismiss="modal"
+                    (click)="deleteAssessment()">
+                    Remove
+                </a>
+            </li>
+            <li role="presentation">
+                <a *ngIf="kebabMenu.delete" class="dropdown-item" role="menuitem" tabindex="-1" data-dismiss="modal"
+                    (click)="deleteAssessment()">
+                    Delete
+                </a>
+            </li>
+        </div>
+    </ul>
+</div>
+
+<common-modal-component *ngIf="rename" [size]="size" [header]="modalHeader" (modalOk)="modalOkJob()" (modalCancel)="modalCancelJob()">
+    <form [formGroup]="renameValidationForm" assessmentName>
+        <div class="ahe-ui form-group">
+            <label for="title" class="float-left">Title</label>
+            <input id="name" class="form-control" formControlName="title" [(ngModel)]="title" (ngModelChange)="clearFilter()" [ngClass]="{ 'is-invalid': submitted && renameValidationForm.invalid }" />
+            <!-- <mhe-input [id]="'rename-input'" [type]="inputType.Text" [(ngModel)]="title" (ngModelChange)="clearFilter()" (keyup)="hideErrors()" [maxlength]="80"></mhe-input> -->
+            <div *ngIf="submitted && renameValidationForm.controls.title.errors" class="invalid-feedback">
+                <div class="float-left" *ngIf="renameValidationForm.controls.title.errors.required">Title is required</div>
+            </div>
+            <div *ngIf="submitted && renameValidationForm.controls.title.errors && renameValidationForm.controls.title.errors.minlength" class="invalid-feedback">
+                <div class="float-left" *ngIf="renameValidationForm.controls.title.errors.minlength.requiredLength > renameValidationForm.controls.title.errors.minlength.actualLength">Test name cannot be less than 3 characters.</div>
+            </div>
+            <div *ngIf="submitted && renameValidationForm.controls.title.errors && renameValidationForm.controls.title.errors.maxlength" class="invalid-feedback">
+                <div class="float-left" *ngIf="renameValidationForm.controls.title.errors.maxlength.actualLength > renameValidationForm.controls.title.errors.maxlength.requiredLength">Test name cannot be more than 80 characters.</div>
+            </div>
+            <div *ngIf="submitted && renameValidationForm.errors" class="invalid-feedback">
+                <div class="float-left" *ngIf="renameValidationForm.errors.validated">Name cannot be {{renameValidationForm.errors.validated}}.</div>
+              </div>
+              <div *ngIf="submitted && message != ''" class="unique-error">
+                <div class="float-left">{{message}}</div>
+              </div>
+        </div>
+    </form>
+</common-modal-component>
+
+<div *ngIf="alertMessageData.Message != ''" class="ahe-ui-alert-modal" id="okCancelModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{alertMessageData.Message}}
+                    </div>
+                    <div class="modal-footer">
+                        <mhe-button buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" class="align-left" data-dismiss="modal" (click)="closeModal(false)"></mhe-button>
+                        <mhe-button buttonText="Ok" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="closeModal(true)"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="show != false" class="ahe-ui-alert-modal" id="viewMore" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-more-info-new" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-new">
+                        More Info
+                    </div>
+                    <div class="modal-body-new">
+                        <ng-container *ngIf="viewAssessmentData">
+
+                            <label class="label-info">Title</label>:
+                            <span class="label-span">{{viewAssessmentData.collection_title}}</span>
+                            <br />
+                            <label class="label-info">Availability</label>:
+                            <span class="label-span" *ngIf="viewAssessmentData.status == 'qtiAndDocx'">Available</span>
+                            <span class="label-span" *ngIf="viewAssessmentData.status != 'qtiAndDocx'">Pending</span>
+                            <br />
+                            <label class="label-info">Date Created</label>:
+                            <span class="label-span">{{viewAssessmentData.creation | date:"MMM d, y, h:mm:ss a"}}</span>
+                            <br />
+                            <label class="label-info">Date Last Modified</label>:
+                            <span class="label-span">{{viewAssessmentData.modified | date:"MMM d, y, h:mm:ss a"}}</span>
+                            <br />
+                            <span *ngFor="let assessment of viewAssessmentData.questionsType | keyvalue">
+                                <label class="label-question" *ngIf="assessment.key == 'Algo_count'">Algorithm</label>
+                                <label class="label-question" *ngIf="assessment.key == 'MC_count'">Multiple Choice</label>
+                                <label class="label-question" *ngIf="assessment.key == 'TF_count'">True False</label>
+                                <label class="label-question" *ngIf="assessment.key == 'FB_count'">Fill in the Blank</label>
+                                <label class="label-question" *ngIf="assessment.key == 'CA_count'">Check all that apply</label>
+                                <label class="label-question" *ngIf="assessment.key == 'SA_count'">Short Answers</label>
+                                : <span class="label-span-question">{{assessment.value}}</span>
+                                <br />
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div class="modal-footer-new">
+                        <!-- <button type="button" class="align-left btn btn-lg btn-primary" data-dismiss="modal" (click)="viewAssessment(false)">
+                            Ok
+                        </button> -->
+                        <mhe-button class="align-left" buttonText="Ok" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="viewAssessment(false)"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showIframe" class="ahe-ui-alert-modal" id="previewModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay" id="previewModalOverlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-more-info-new">
+                <div class="modal-content preview-content">
+                    <div class="modal-header-new">
+                        Preview
+                        <button aria-label="close dialog" class="close" data-dismiss="modal" type="button" (click)="closePreviewModal(true)">
+                            <span class="ahe-icon ahe-icon-close-white"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body-new" *ngFor="let item of previewCheckedArr">
+                        <div class="question-body">
+                            <div class="question-sequence">
+                                <div class="ml-3" style="padding-top:6px;"><strong>Question {{item.index + 1}}</strong></div>
+                            </div>
+                            <div class="ml-4 mt-2" style="font-size: 18px">
+                                <span><strong>{{item.typeDesc}}</strong></span>
+                            </div>
+                            <div class="ml-4 mt-2">
+                                <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(item.onlinePreview)' class="iframe-body-multiple preview-body"
+                                    id="previewIframe"></iframe>
+                            </div>
+                            <div class="row h-20 mt-2 justify-content-center align-items-center">
+                                <!-- <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true"
+                                    autoHide="true" responsive="true" screenReaderPaginationLabel="Pagination"
+                                    screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+                                </pagination-controls> -->
+                                <mhe-pager role="navigation" [length]="totalPage" [pageIndex]="pageNumber" [pageSize]="itemsPerPage" (page)="pageChanged($event)">
+                                </mhe-pager>
+                            </div>
+                        </div>
+
+                        <!-- <div *ngIf="totalPage > 0" class="row h-20 mt-5 justify-content-center align-items-center">
+                            Page {{pageNumber}} of {{totalPage}}
+                        </div> -->
+                    </div>
+                    <div class="modal-footer-new">
+                        <!-- <button type="button" class="align-left btn btn-lg btn-primary">
+                            Print
+                        </button> -->
+                        <mhe-button class="align-left" buttonText="Print" [purpose]="_buttonPurpose.Primary"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showCopyModal" class="ahe-ui-alert-modal" id="showCopyModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-copy" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-new">
+                        <label>Do you want to make a copy of this test?</label>
+                    </div>
+                    <div class="modal-body-copy ahe-ui form-group row">
+                        <div class="md-3 mt-3 ml-3">New test title:</div>
+                        <div id="copyContainer" class="md-9 ml-2">
+                            <!-- <input type="text" maxlength="80" id="newCollectionTitle" class="form-control" style="width:350px;"
+                                value="{{newCollectionTitle}}" [(ngModel)]="newCollectionTitle" (keyup)="hideErrors()" /> -->
+                            <mhe-input [id]="'newCollectionTitle'" [type]="inputType.Text" [error]="showCopyError" [(ngModel)]="newCollectionTitle" (keyup)="hideErrors()" [maxlength]="80"></mhe-input>
+                        </div>
+                        <div *ngIf="showCopyError" class="md-9 ml-2 mt-3" style="color:red; border-radius: 5px;">
+                            {{copyErrorMsg}}
+                        </div>
+                    </div>
+                    <div class="modal-footer-new">
+                        <!-- <button type="button" class="align-left btn btn-secondary btn-lg" data-dismiss="modal" (click)="cancelCopy()">
+                            Cancel
+                        </button>
+                        <button type="button" class="ml-2 btn btn-primary btn-lg" data-dismiss="modal" (click)="confirmCopy()">
+                            Confirm
+                        </button> -->
+                        <mhe-button class="align-left" buttonText="Cancel" [purpose]="_buttonPurpose.Secondary" data-dismiss="modal" (click)="cancelCopy()"></mhe-button>
+                        <mhe-button buttonText="Ok" [purpose]="_buttonPurpose.Primary" data-dismiss="modal" (click)="confirmCopy()"></mhe-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

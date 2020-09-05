@@ -1,0 +1,260 @@
+.source-container{
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.ahe-ui-checkbox{
+  cursor: pointer;
+}
+.hideChildren ~ ul{
+  display: none;
+}
+.question-dropped{
+  .question-list{
+    cursor: move;
+    font-weight: normal;
+    span{
+      &:hover{
+        cursor: pointer;
+        color :#007c91;
+        text-decoration: underline;
+    }
+  }
+  label{
+    position: relative;
+    padding-bottom: 15px;
+  }
+}
+}
+.questions-unused{
+  .question-list{
+    cursor:move;
+    font-weight: bold;
+    span{
+      &:hover{
+        cursor: pointer;
+        color :#007c91;
+        text-decoration: underline;
+    }
+  }
+  label{
+    position: relative;
+    padding-bottom: 15px;
+  }
+}
+}
+.question-title {
+  span {
+    &:hover{
+    cursor: pointer;
+    color :#007c91;
+    text-decoration: underline;
+  }
+}
+}
+.line-divider{
+  border-top: 1px solid #bdbdbd;
+}
+#sourceFooter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  height: 80px;
+  background-color: #eaeaea;
+  border-top: 1px solid #cccccc;
+}
+ul, #myUL {
+    list-style-type: none;
+  }
+  
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+  
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);  
+  }
+  
+  .nested {
+    display: none;
+  }
+  
+  .active {
+    display: block;
+  }
+
+  /* Checkbox SCSS */
+  .checkbox-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .css-label {
+    cursor: pointer;
+  }
+  .css-checkbox {
+    display: none;
+  }
+  .fa {
+    color: white;
+    line-height: 16px;
+    border-radius: 4px;
+  }
+  .fa-plus {
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    background-color: #3AC5C9;
+    display: block; 
+  }
+  .fa-minus {
+    padding-top: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    background-color: #3AC5C9;   
+    display: block; 
+  }
+  .highlight-name{
+    font-weight: 900;
+  }
+  .highlight-bg{
+    background-color: #cecece;
+  }
+  .bank-items :hover{
+    cursor: pointer;
+    font-weight: 900;
+  }
+
+  /** Breadcrum style */
+  .assessment-breadcrumb { 
+    list-style: none; 
+    overflow: hidden; 
+    font: 18px Sans-Serif;
+  }
+  .assessment-breadcrumb li { 
+    float: left; 
+  }
+  .assessment-breadcrumb li a {
+    color: white;
+    text-decoration: none; 
+    padding: 10px 0 10px 65px;
+    background: hsla(34, 1%, 28%,1); 
+    position: relative; 
+    display: block;
+    float: left;
+  }
+  .assessment-breadcrumb li a::after { 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid hsla(34, 1%, 28%,1);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px; 
+    left: 100%;
+    z-index: 2; 
+  }
+  .assessment-breadcrumb li:first-child a {
+    padding-left: 10px;
+  }
+  .assessment-breadcrumb li:nth-child(2) a       { background:        hsla(34, 1%, 38%,1); }
+  .assessment-breadcrumb li:nth-child(2) a:after { border-left-color: hsla(34, 1%, 38%,1); }
+  .assessment-breadcrumb li:nth-child(3) a       { background:        hsla(34, 1%, 48%,1); }
+  .assessment-breadcrumb li:nth-child(3) a:after { border-left-color: hsla(34, 1%, 48%,1); }
+  .assessment-breadcrumb li:nth-child(4) a       { background:        hsla(34, 1%, 58%,1); }
+  .assessment-breadcrumb li:nth-child(4) a:after { border-left-color: hsla(34, 1%, 58%,1); }
+  .assessment-breadcrumb li:nth-child(5) a       { background:        hsla(34, 1%, 68%,1); }
+  .assessment-breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34, 1%, 68%,1); }
+  /* .assessment-breadcrumb li:last-child a {
+    background: transparent !important;
+    color: black;
+    pointer-events: none;
+    cursor: default;
+  }
+  .assessment-breadcrumb li:last-child a::after { 
+    border: 0; 
+  } */
+  .assessment-breadcrumb li a:hover { 
+    background: hsla(34, 1%, 18%,1);; 
+  }
+  .assessment-breadcrumb li a:hover:after { 
+    border-left-color: hsla(34, 1%, 18%,1) !important; 
+  }
+
+  .sort-container{
+    position: relative;
+    margin-left: 5px;
+    .fa{
+      color: #0c0c0c;
+    }
+    .fa-caret-down, .fa-caret-up{
+      position: absolute;
+      height: 5px;
+      line-height: 5px;      
+    }
+    .fa-caret-up{
+      top: 0;
+    }
+    .fa-caret-down{
+      bottom: 0;    
+    }
+  }
+
+/** Table styles **/
+.fixed_header {
+  width: 100%;
+  display: table;
+  thead {
+    display: table; /* to take the same width as tr */
+    width: calc(100% - 17px); /* - 17px because of the scrollbar width */
+  }  
+  tbody {
+    display: block; /* to enable vertical scrolling */
+    overflow-y: auto; /* keeps the scrollbar even if it doesn't need it; display purpose */
+  }
+}
+
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  word-break: break-all; /* 4. */
+}
+
+.fixed_header tr {
+  display: table; /* display purpose; th's border */
+  width: 100%;
+}
+
+.fixed_header th:nth-child(1),td:nth-child(1){
+    width: 70%;
+}
+.fixed_header th:nth-child(2),td:nth-child(2){
+    width: 30%;
+}

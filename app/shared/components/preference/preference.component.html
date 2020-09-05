@@ -1,0 +1,425 @@
+<div class="container-fluid prefHeight">
+  <div class="source-container ml-3">
+    <div class="row no-margin">
+    	<div class="col-md-3 col-lg-3 col-xl-3"></div>
+      <div class="col-md-9 col-lg-9 col-xl-9">
+        <div class="row no-margin fontSize18">
+          <strong>Preferences</strong>
+        </div>
+      </div>
+    </div>
+    <div class="row no-margin">
+    <div class="col-md-3 col-lg-3 col-xl-3"></div>
+    <div class="col-md-9 col-lg-9 col-xl-9">
+     	<div class="col-md-12 col-lg-12 col-xl-12 mt-2">
+     		<div class="row">
+	        <div class="col-md-3 mt-1">
+	        	<strong>Export as:</strong>
+	        </div>
+	         <div class="ahe-ui-radio-list outputPrefRadio" role="radiogroup">
+	         	<label class="ahe-ui-radio">
+             <input type="radio" name="outputPref" id="outputQTI" value="qtiPackage" (change)="outputPrefChange('qtiPackage')" [(ngModel)]="outputPref">
+             <span>QTI</span>
+						 </label>
+						 <div [hidden]="!qtiTypesVisible" class="qtiTypes">
+							<label class="ahe-ui-radio">
+								<input type="radio" name="qtiType" id="qtiType" [(ngModel)]="exportTypeValue" value="canvas" (change)="prefChanges($event)">
+								<span>Canvas</span>
+							</label>
+							<label class="ahe-ui-radio">
+								<input type="radio" name="qtiType" id="qtiType" [(ngModel)]="exportTypeValue" value="d2l" (change)="prefChanges($event)">
+								<span>D2L</span>
+							</label>
+						 </div>
+           	<label class="ahe-ui-radio">
+             <input type="radio" name="outputPref" id="outputDocX" value="document" (change)="outputPrefChange('document')" [(ngModel)]="outputPref">
+             <span>DOCX</span>
+						</label>
+						<!-- <mhe-radio-button value="qtiPackage" (change)="outputPrefChange('qtiPackage')" [(ngModel)]="outputPref">QTI</mhe-radio-button>
+						<mhe-radio-button value="document" (change)="outputPrefChange('document')" [(ngModel)]="outputPref">DOCX</mhe-radio-button> -->
+	        </div>
+	      </div>
+     	</div>
+			 
+
+      <div [hidden]="!docxPrefVisible" class="col-md-12 col-lg-12 col-xl-12">
+      	<div class="mt-4 line-divider smokeBgColor">
+	        <div class="row">
+	        	<div class="col-md-3">
+	           <label class="ahe-ui-checkbox">
+	             <input type="checkbox" id="scramble" [(ngModel)]="scramble" [value]="scramble" (change)="prefChanges($event)">
+	             <span class="cursor-pointer">Scramble</span>
+	           </label>
+	           <label [hidden]="!showAlgoPref" class="ahe-ui-checkbox ml-5">
+	             <input type="checkbox" id="scrambleDistractors" [(ngModel)]="scrambleDistractors" [value]="scrambleDistractors" (change)="prefChanges($event)">
+	             <span class="cursor-pointer">Scramble distractors</span>
+						 </label>
+						 <!-- <mhe-checkbox id="scramble" (change)="prefChanges($event)" [(ngModel)]="scramble" value="scramble">Scramble</mhe-checkbox>
+						 <mhe-checkbox [hidden]="!showAlgoPref" id="scrambleDistractors" [(ngModel)]="scrambleDistractors" (change)="prefChanges($event)" value="scrambleDistractors">Scramble distractors</mhe-checkbox> -->
+	         	</div>
+	         	<div [hidden]="!showAlgoPref" class="col-md-3 ahe-ui-radio-list" role="radiogroup">
+             	<label class="ahe-ui-radio">
+               <input type="radio" id="lockedAlgo" name="scrambleAlgo" value="lockedAlgo" (change)="prefChanges($event)" [(ngModel)]="algoPref">
+               <span>&nbsp;&nbsp;w/ Locked Algorithm</span>
+             	</label>
+             	<label class="ahe-ui-radio">
+               <input type="radio" id="unlockedAlgo" name="scrambleAlgo" value="unlockedAlgo" (change)="prefChanges($event)" [(ngModel)]="algoPref">
+               <span>&nbsp;&nbsp;w/ Unlocked Algorithm</span>
+            	 </label>
+           	</div>
+	         </div>
+	         <div [hidden]="!showAlgoPref" class="mt-4 ml-3">
+	         	<strong># of versions (max 20):</strong>
+	         	<div class="ahe-ui form-group no-margin">
+	         		<input class="mt-2 textWidth form-control" type="text" id="noOfVersions" maxlength="2" id="versions" [value]="noOfVersions" (change)="prefChanges($event)">
+	         	</div>
+	         	<br/>
+	         </div>
+	      </div>
+      	<div class="line-divider">
+	      	<div class="fontSize18 mt-3">
+	      		<strong>Appearance</strong>
+	      	</div>
+	      	<div class="col-md-12 col-lg-12">
+				      <div class="row">
+				        <div class="col-lg-4">
+									<div class="row ahe-ui form-group mt-3 ml-2 no-margin">
+	              		 <strong>Layout</strong>
+	            		</div>
+	            		<div class="ahe-ui-radio-list" role="radiogroup">
+			             	<label class="ahe-ui-radio">
+			               <input type="radio" id="oneColumn" name="layout" value="oneColumn" (change)="prefChanges($event)" [(ngModel)]="columnPref" />
+			               <span>&nbsp;&nbsp;</span>
+			               <img [src]="oneColumnImgUrl" title="One Column" alt="One Column">
+			               <span>&nbsp;&nbsp;One Column</span>
+			             	</label>
+			             	<label class="ahe-ui-radio">
+			               <input type="radio" id="twoColumn" name="layout" value="twoColumn" (change)="prefChanges($event)" [(ngModel)]="columnPref">
+			               <span>&nbsp;&nbsp;</span>
+			               <img [src]="twoColumnImgUrl" title="Two Column" alt="Two Column">
+			               <span>&nbsp;&nbsp;Two Column</span>
+			            	 </label>
+			           	</div>
+								</div>
+				        <div class="col-lg-4">
+									<div class="row ahe-ui form-group mt-3 ml-2 no-margin">
+			               <strong>Spacing between questions</strong>
+			            </div>
+			            <div class="ahe-ui-radio-list" role="radiogroup">
+			               <label class="ahe-ui-radio">
+			               <input type="radio" id="narrowSpacing" name="spacing" value="narrow" (change)="prefChanges($event)" [(ngModel)]="spacePref">
+			               <span>&nbsp;&nbsp;</span>
+			               <img [src]="narrowSpaceImgUrl" title="Narrow Space" alt="Narrow Space">
+			               <span>&nbsp;&nbsp;Narrow (2 Rows)</span>
+			            	</label>
+			             	<label class="ahe-ui-radio">
+			               <input type="radio" id="wideSpacing" name="spacing" value="wide" (change)="prefChanges($event)" [(ngModel)]="spacePref">
+			               <span>&nbsp;&nbsp;</span>
+			               <img [src]="wideSpaceImgUrl" title="Wide Space" alt="Wide Space">
+			               <span>&nbsp;&nbsp;Wide (3 Rows)</span>
+			             	</label>
+			             	
+			           	</div>
+								</div>
+				      </div>
+				  	</div>
+        </div>
+        <div class="mt-3 line-divider smokeBgColor">
+           <div class="mt-3 ml-1 fontSize18">
+              <strong>Display</strong>
+           </div>
+          <div class="ml-1 ahe-ui form-group no-margin">
+          	<strong>Page numbering starts at:</strong>
+	         	<input class="ml-2 mt-2 textWidth form-control" type="text" id="pageNumber" maxlength="5" [value]="pageNumber" (focusout)="validateNumber($event, 0)">
+	        </div>
+	        <br/>
+        </div>
+        <div class="line-divider">
+           <div class="mt-3 ml-1">
+              <strong>First page header</strong> ({{firstHeaderCharLeft}} out of {{maxHeaderLength}} characters remaining)
+           </div>
+          <div class="ml-1 ahe-ui form-group">
+          	<textarea [attr.maxlength]="maxHeaderLength" id="firstPageHeader" class="ahe-ui-textarea form-control ml-2 mb-3 instructions-textarea" cols="30" rows="3" 
+          			(change)="prefChanges($event)" (keyup)="countCharacters($event)" [(ngModel)]="firstPageHeader">{{firstPageHeader}}</textarea>
+	        </div>
+	        <div class="mt-3 ml-1">
+              <strong>Other page headers</strong> ({{secondHeaderCharLeft}} out of {{maxHeaderLength}} characters remaining)
+           </div>
+          <div class="ml-1 ahe-ui form-group">
+          	<textarea [attr.maxlength]="maxHeaderLength" id="otherPageHeader" class="ahe-ui-textarea form-control ml-2 mb-3 instructions-textarea" cols="30" rows="3" 
+          			(change)="prefChanges($event)" (keyup)="countCharacters($event)" [(ngModel)]="otherPageHeader">{{otherPageHeader}}</textarea>
+	        </div>
+        </div>
+      	<div class="line-divider smokeBgColor">
+           <div class="mt-3 ml-1 mb-2 no-margin">
+              <strong>Instructions</strong>
+           </div>
+           <div class="ahe-ui form-group no-margin">
+	           <textarea maxlength="66" id="instructions" class="ahe-ui-textarea form-control ml-2 instructions-textarea" cols="30" rows="3" 
+	           		(change)="prefChanges($event)"  [(ngModel)]="instructions">{{instructions}}</textarea>
+	         	<br/>
+	         </div>
+        </div>
+	      <div class="col-md-12 col-lg-12 col-xl-12 line-divider">
+	      	<div class="ahe-ui mt-3 no-margin">
+               <strong>Display question type</strong>
+          </div>
+	        <div class="relative-top">
+	           <label class="ahe-ui-checkbox">
+	             <input type="checkbox" id="questionSort" [(ngModel)]="questionSort" [value]="questionSort" (click)="sortSelect($event)">
+	             <span class="cursor-pointer">Sort by question type</span>
+	           </label>
+	         </div>
+	      </div>
+	      <div class="col-md-12 col-lg-12 col-xl-12">
+	        <div class="relative-top">
+	           <label class="ahe-ui-checkbox">
+	             <input type="checkbox" id="displayQuestionTypeHeader" [(ngModel)]="displayQuestionHeaderChecked" [checked]="displayQuestionHeaderChecked" [disabled]="questionTypeHeaderDisabled" (change)="prefChanges($event)">
+	             <span class="cursor-pointer">Display question type header</span>
+	           </label>
+	         </div>
+	         <div class="relative-top" [hidden]="!displayQuestionHeaderChecked">
+	           <label><a class="cursor-pointer" (click)="showHeaderOrder()">Customize headers and Order ></a></label>
+	         </div>
+	      </div>
+	      <div class="mt-3 line-divider smokeBgColor">
+           <div class="mt-3 ml-1">
+              <strong>Question number</strong>
+           </div>
+          <div class="ml-1 ahe-ui form-group no-margin">
+          	Question number starts at:
+	         	<input class="ml-2 mt-2 mb-4 textWidth form-control" type="text" id="startQuestionNo" maxlength="5" [value]="startQuestionNo" (focusout)="validateNumber($event, 0)">
+	        </div>
+        </div>
+      	<div class="col-md-12 col-lg-12 line-divider">
+					<div class="relative-top mb-3">
+						<label class="ahe-ui-checkbox">
+							<input type="checkbox" id="answerBlanks" [(ngModel)]="answerBlanks" [value]="answerBlanks" (change)="prefChanges($event)">
+							<span class="cursor-pointer">Show answer blanks for True/False, Multiple Choice and Check All Question types</span>
+						</label>
+						<label class="ahe-ui-checkbox">
+							<input type="checkbox" id="questionInfo" [(ngModel)]="questionInfo" [value]="questionInfo" (change)="prefChanges($event)">
+							<span class="cursor-pointer">Show Question Info (Metadata)</span>
+						</label>
+					</div>
+		      <div class="row">
+		        <div class="col-lg-4">
+							<div class="row ahe-ui form-group mt-3 ml-2 no-margin">
+             		 <strong>True/False</strong>
+           		</div>
+           		<div class="ahe-ui-radio-list" role="radiogroup">
+	             	<label class="ahe-ui-radio">
+	               <input type="radio" id="tfbelowVertical" name="tfAlignment" value="Below-Vertical" (change)="prefChanges($event)" [(ngModel)]="tfAlignment" />
+	               <span></span>
+	               <strong>Below-vertical</strong>
+	               <div class="row mt-2">
+								 	<div class="col-sm-8 questionBar"></div>
+								  <div *ngIf="showAnswerBlanks" class="col-sm-3 ml-3 answerBlanksBar"></div>
+								 </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	             	</label>
+	             	<label class="ahe-ui-radio mt-4">
+	               <input type="radio" id="tfbelowHorizontal" name="tfAlignment" value="Below-Horizontal" (change)="prefChanges($event)" [(ngModel)]="tfAlignment">
+	               <span></span>
+	               <strong>Below-horizontal</strong>
+	               <div class="row mt-2">
+								 	<div class="col-sm-8 questionBar"></div>
+								  <div *ngIf="showAnswerBlanks" class="col-sm-3 ml-3 answerBlanksBar"></div>
+								 </div>
+	               <div>
+	               	<div class="horizontalDot1"></div>
+	               	<div class="horizontalBar1"></div>
+	               	<div class="horizontalDot2"></div>
+	               	<div class="horizontalBar2"></div>
+	               	<div class="horizontalDot3"></div>
+	               	<div class="horizontalBar3"></div>
+	               </div>
+	              </label>
+	           	</div>
+						</div>
+						<div class="col-lg-4">
+							<hr />
+							<div class="row ahe-ui form-group mt-3 ml-2 no-margin">
+             		 <strong>Multiple Choice / Check All</strong>
+           		</div>
+           		<div class="ahe-ui-radio-list" role="radiogroup">
+	             	<label class="ahe-ui-radio">
+	               <input type="radio" id="mcbelowVertical" name="mcCaAlignment" value="Below-Vertical" (change)="prefChanges($event)" [(ngModel)]="mcCaAlignment" />
+	               <span></span>
+	               <strong>Below-vertical</strong>
+	               <div class="row mt-2">
+								 	<div class="col-sm-8 questionBar"></div>
+								  <div *ngIf="showAnswerBlanks" class="col-sm-3 ml-3 answerBlanksBar"></div>
+								 </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	               <div>
+	               	<div class="verticalDot"></div>
+	               	<div class="verticalBar"></div>
+	               </div>
+	             	</label>
+	             	<label class="ahe-ui-radio mt-4">
+	               <input type="radio" id="mcbelowHorizontal" [disabled]="disableBelowHorizontal" name="mcACalignment" value="Below-Horizontal" (change)="prefChanges($event)" [(ngModel)]="mcCaAlignment">
+	               <span></span>
+	               <strong>Below-horizontal</strong>
+	               <div class="row mt-2">
+								 	<div class="col-sm-8 questionBar"></div>
+								  <div *ngIf="showAnswerBlanks" class="col-sm-3 ml-3 answerBlanksBar"></div>
+								 </div>
+	               <div>
+	               	<div class="horizontalDot1"></div>
+	               	<div class="horizontalBar1"></div>
+	               	<div class="horizontalDot2"></div>
+	               	<div class="horizontalBar2"></div>
+	               	<div class="horizontalDot3"></div>
+	               	<div class="horizontalBar3"></div>
+	               </div>
+	              </label>
+	           	</div>
+						</div>
+						<div class="col-lg-3">
+							<hr />
+							<div class="row ahe-ui form-group mt-3 ml-2 no-margin">
+             		 <strong>Short Answer</strong>
+           		</div>
+           		<div class="ahe-ui-radio-list" role="radiogroup">
+	             	<label class="ahe-ui-radio">
+	               <input type="radio" id="saLines" name="saPref" value="lines" (change)="prefChanges($event)" [(ngModel)]="saPref" />
+	               <span></span>
+	               <strong>Lines</strong>
+	               <div class="mt-2" class="questionBar"></div>
+	               <div>
+	               	<div class="saLines"></div>
+	               	<div class="saLines mt-3"></div>
+	               	<div class="saLines mt-3 mb-2"></div>
+	               </div>
+	             	</label>
+	             	<label class="ahe-ui-radio mt-4">
+	               <input type="radio" id="saBlanks" name="saPref" value="blank" (change)="prefChanges($event)" [(ngModel)]="saPref">
+	               <span></span>
+	               <strong>Blanks</strong>
+	               <div class="mt-2" class="questionBar"></div>
+	               <div>
+	               	<div class="saBlanks"></div>
+	               </div>
+	              </label>
+	           	</div>
+						</div>
+		      </div>
+		  	</div>
+		  	
+		  	<div class="mt-3 line-divider smokeBgColor">
+           <div class="mt-3 ml-1">
+              <strong>Answer Key</strong>
+           </div>
+          <div class="ml-1 ahe-ui ahe-ui-radio-list form-group no-margin">
+          	<label class="ahe-ui-radio">
+               <input type="radio" id="continuePageNo" name="answerKeyPref" value="continuePageNo" (change)="prefChanges($event)" [(ngModel)]="answerKeyPage" />
+               <span>Continue page numbering</span>
+            </label>
+            <label class="ahe-ui-radio">
+               <input type="radio" id="restartPageNo" name="answerKeyPref" value="restartPageNo" (change)="prefChanges($event)" [(ngModel)]="answerKeyPage" />
+               <span class="restartPageNo">Restart page numbering at:</span>
+               	<input class="ml-3 textWidth form-control" type="text" id="answerKeyPageNo" [disabled]="answerKeyPageNoDisabled" maxlength="5" [value]="answerKeyPageNo" (focusout)="validateNumber($event, 0)">
+            </label>
+	        </div>
+	        <br/>
+        </div>
+        
+		  	<div class="line-divider">
+          <div class="mt-3 mb-1">
+          	<label class="ahe-ui-checkbox">
+	         		<input class="ml-1 mt-1 mb-1" type="checkbox" id="saveAsDefault" [(ngModel)]="saveAsDefault" [value]="saveAsDefault" (change)="prefChanges($event)">
+	         		<span class="cursor-pointer"><strong>Save these settings as default</strong></span>
+	         	</label>
+	        </div>
+        </div>
+        
+        <div>
+          <div class="mt-1 mb-4">
+          	<label class="ahe-ui-checkbox">
+	         		<input class="ml-1 mt-1 mb-4" type="checkbox" id="applyDefault" [(ngModel)]="applyDefault" [value]="applyDefault" (change)="prefChanges($event)">
+	         		<span class="cursor-pointer"><strong>Apply default settings</strong></span>
+	         	</label>
+	        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <common-modal-component *ngIf="showHeaderPreferences" [size]="size" [header]="modalHeader" (modalOk)="modalOkJob()" (modalCancel)="modalCancelJob()">
+	<div id="header-order" class="col-lg-12 col-md-12 col-xl-12">
+		<div class="row large-header">
+			Set order for question type headers
+		</div>
+		<div class="row">
+			Drag to set order
+		</div>
+		<div class="row">
+			<div id="header-container" [dragula]='"HEADERS"' [(dragulaModel)]="headerType">
+				<div id="header-types" *ngFor="let type of headerType; let i = index" class="row question-row no-margin">
+					<div class="p-all-0 col-sm-1 col-lg-1 col-md-1 col-xl-1">
+						{{i + 1}}
+					</div>
+					<div [ngClass]="{'rename-edit-icon' : selectedIndex == i }" class="p-all-0 col-sm-1 col-lg-1 col-md-1 col-xl-1">
+						<span class="handles">
+							<i id="header-drag-icon" class="dpg-icon dpg-icon-system-kebab"></i>
+							<i id="header-drag-icon" style="margin-left: -13px" class="dpg-icon dpg-icon-system-kebab"></i>
+						</span>
+					</div>
+					<div *ngIf="selectedIndex !== i" id="header-value" class="p-all-0 col-sm-7 col-lg-7 col-md-7 col-xl-7">
+						<span [innerHtml]= "type.desc | truncate:[30, '...']"></span>
+					</div>
+					<div *ngIf="selectedIndex == i" #renameField class="ahe-ui form-group p-all-0 col-sm-7 col-lg-7 col-md-7 col-xl-7">
+						<input id="header-value" class="form-control" type="text" [(ngModel)]="type.desc">
+					</div>
+					<div id="header-rename-text" class="p-all-0 col-sm-3 col-lg-3 col-md-3 col-xl-3">
+						<div [ngClass]="{'rename-edit' : selectedIndex == i }" (click)="editHeader(i,type)">Rename</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</common-modal-component>
+
+<div *ngIf="settingsChanged" class="ahe-ui-alert-modal" id="settingsChangedModal" role="dialog" tabindex="-1">
+    <div class="modal-overlay">
+        <div class="modal-container-new">
+            <div class="modal-dialog-settings-changed" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-new">
+                        <label>Default settings change alert !</label>
+                    </div>
+                    <div class="modal-body-settings-changed ahe-ui form-group row">
+                        <div class="md-3 mt-1 ml-3">Would you like to update your existing default settings with these selections?</div>
+                    </div>
+                    <div class="modal-footer-new">
+                        <button type="button" class="align-left btn btn-secondary btn-lg" data-dismiss="modal" (click)="cancelSettingsChange()">
+                            Cancel
+                        </button>
+                        <button type="button" class="ml-2 btn btn-primary btn-lg" data-dismiss="modal" (click)="confirmSettingsChange()">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+right-align{
+    right:0;
+    left: auto
+}
+  
+.modal-content{
+	z-index: 1010;
+	text-align: left;
+}
+
+.modal-dialog{
+	position: fixed;
+	top: 50%;
+	width: 300px;
+	z-index: 1010;
+	margin: 0px auto;
+	transform: translateY(-50%);
+	left: calc(50% - 150px);
+}
+  
+.modal-overlay{
+	background-color: rgba(0, 0, 0, 0.2); 
+}
